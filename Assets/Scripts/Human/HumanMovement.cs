@@ -10,16 +10,21 @@ public class HumanMovement : MonoBehaviour
 
     [SerializeField]
     private RangeBoundariesFloat walkSpeedRange;
+
     [SerializeField]
     private RangeBoundariesFloat rotationSpeedRange;
+
     [SerializeField]
     [ReadOnly]
     private float targetRotation;
 
+    [SerializeField]
+    [ReadOnly]
+    private State state = State.Rotating;
+
     private Rigidbody2D rigidbody;
 
     private Coroutine currentCoroutine;
-    private State state = State.Rotating;
 
     private void Start()
     {
@@ -37,6 +42,7 @@ public class HumanMovement : MonoBehaviour
         if (currentCoroutine != null)
         {
             StopCoroutine(currentCoroutine);
+            currentCoroutine = null;
         }
         currentCoroutine = StartCoroutine(Walk());
     }
@@ -49,9 +55,9 @@ public class HumanMovement : MonoBehaviour
             rigidbody.linearVelocity = Vector2.zero;
             targetRotation = Random.Range(0, 360);
             float rotationSpeed = rotationSpeedRange.GetRandomBetween();
-            while(Mathf.Abs(GetPositiveAngle(rigidbody.rotation) - targetRotation) > 0.1)
+            while(Mathf.Abs(GetClampedAngle(rigidbody.rotation) - targetRotation) > 0.1)
             {
-                rigidbody.MoveRotation(Mathf.MoveTowardsAngle(GetPositiveAngle(rigidbody.rotation), targetRotation, rotationSpeed * Time.deltaTime));
+                rigidbody.MoveRotation(Mathf.MoveTowardsAngle(GetClampedAngle(rigidbody.rotation), targetRotation, rotationSpeed * Time.deltaTime));
                 yield return null;
             }
             state = State.Walking;
@@ -60,8 +66,12 @@ public class HumanMovement : MonoBehaviour
         }
     }
 
-    private float GetPositiveAngle(float angle)
+    private float GetClampedAngle(float angle)
     {
+        while(angle > 360)
+        {
+            angle -= 360;
+        }
         while(angle < 0)
         {
             angle += 360;
