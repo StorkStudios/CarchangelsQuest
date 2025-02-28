@@ -8,8 +8,6 @@ public class CarEngine : MonoBehaviour
     [SerializeField]
     private float steeringForce;
     [SerializeField]
-    private float breakForce;
-    [SerializeField]
     private float driftFactor;
     [SerializeField]
     private float breakDriftFactor;
@@ -55,13 +53,22 @@ public class CarEngine : MonoBehaviour
 
         ApplyEngineForce();
 
-        Vector2 forwardVelocity = transform.up * Vector2.Dot(rigidbody.linearVelocity, transform.up);
+        float forwardSpeed = Vector2.Dot(rigidbody.linearVelocity, transform.up);
+        Vector2 forwardVelocity = transform.up * forwardSpeed;
         Vector2 lateralVelocity = transform.right * Vector2.Dot(rigidbody.linearVelocity, transform.right);
         Vector2 newLateralVelocity = lateralVelocity * (handbreak.Value ? breakDriftFactor : driftFactor);
         rigidbody.linearVelocity = forwardVelocity + newLateralVelocity;
 
         float carSteerAmount = Mathf.Clamp01(rigidbody.linearVelocity.magnitude / velocitySteerDivider);
-        rotationAngle += steeringWheel.Value * steeringForce * carSteerAmount;
+        float rotationAmount = steeringWheel.Value * steeringForce * carSteerAmount;
+        if (forwardSpeed >= 0)
+        {
+            rotationAngle += rotationAmount;
+        }
+        else
+        {
+            rotationAngle -= rotationAmount;
+        }
         rigidbody.MoveRotation(rotationAngle);
     }
 

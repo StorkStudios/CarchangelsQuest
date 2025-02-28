@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 20321600271152817}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.241, y: -0.289, z: 0}
+  m_LocalPosition: {x: 0.657, y: -0.791, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -223,8 +223,8 @@ MonoBehaviour:
   frontWheels:
   - {fileID: 467967240223102600}
   - {fileID: 3631500281613677385}
-  wheelSteerSpeed: 60
-  wheelSteerAngle: 45
+  wheelSteerSpeed: 360
+  wheelSteerAngle: 30
 --- !u!1 &1255241536692379865
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +251,7 @@ Transform:
   m_GameObject: {fileID: 1255241536692379865}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.241, y: -0.289, z: 0}
+  m_LocalPosition: {x: -0.651, y: -0.791, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -461,7 +461,7 @@ Transform:
   m_GameObject: {fileID: 2085911422288453292}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.241, y: 0.258, z: 0}
+  m_LocalPosition: {x: 0.657, y: 0.709, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -844,7 +844,7 @@ Transform:
   m_GameObject: {fileID: 4583621162467532755}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.241, y: 0.258, z: 0}
+  m_LocalPosition: {x: -0.651, y: 0.709, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

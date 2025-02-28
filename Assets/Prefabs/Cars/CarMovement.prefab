@@ -126,5 +126,5 @@ MonoBehaviour:
   breakDriftFactor: 0.99
   velocitySteerDivider: 4
   handbreakLinearDamping: 2
-  maxForwardSpeed: 10
-  maxReverseSpeed: 5
+  maxForwardSpeed: 27
+  maxReverseSpeed: 13.5
