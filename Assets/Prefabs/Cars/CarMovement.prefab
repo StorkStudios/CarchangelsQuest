@@ -96,7 +96,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5f21d60ced39f1149a8e397e4b360391, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -120,11 +120,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   accelerationForce: 10
-  steeringForce: 100
+  steeringForce: 4
   breakForce: 10
-  driftFactor: 0.9
+  driftFactor: 0.85
   breakDriftFactor: 0.99
-  velocitySteerDivider: 2
+  velocitySteerDivider: 4
   handbreakLinearDamping: 2
   maxForwardSpeed: 10
   maxReverseSpeed: 5

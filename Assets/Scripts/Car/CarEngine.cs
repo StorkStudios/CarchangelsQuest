@@ -79,6 +79,11 @@ public class CarEngine : MonoBehaviour
             return;
         }
 
+        if (handbreak.Value)
+        {
+            return;
+        }
+
         Vector2 engineForce = transform.up * accelerationForce * gasPedal.Value;
         rigidbody.AddForce(engineForce);
     }
