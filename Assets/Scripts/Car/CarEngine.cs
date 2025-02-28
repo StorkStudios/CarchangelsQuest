@@ -11,6 +11,6 @@ public class CarEngine : MonoBehaviour
 
     public readonly ValueWithEvents<float> steerWheel = new ValueWithEvents<float>(0);
     public readonly ValueWithEvents<float> gasPedal = new ValueWithEvents<float>(0);
-    public readonly ValueWithEvents<bool> handbreak = new ValueWithEvents<bool>(0);
+    public readonly ValueWithEvents<bool> handbreak = new ValueWithEvents<bool>(false);
 
 }
