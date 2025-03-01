@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4554982436586526925}
   - component: {fileID: -1046793572532438291}
+  - component: {fileID: 1209819084086620706}
   m_Layer: 0
   m_Name: LevelBase
   m_TagString: Untagged
@@ -57,6 +58,23 @@ MonoBehaviour:
   noiseThreshold: 0.5
   noiseScale: 3
   gridSize: 1.74
+--- !u!114 &1209819084086620706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3182430132283023727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e718118814b3b67c4976e050b6a76911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePerHumanKilled: 1
+  scorePerAverageSpeed: 1
+  speedWindowSeconds: 5
+  playerKillDetector: {fileID: 1188637834455445911}
+  carBody: {fileID: 532414406865423246}
 --- !u!1 &5055054189532815442
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +453,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 688e4764ee768fb46bdf7a524e3d28c0, type: 3}
+--- !u!50 &532414406865423246 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8467156984180297474, guid: 688e4764ee768fb46bdf7a524e3d28c0, type: 3}
+  m_PrefabInstance: {fileID: 8278432500360627340}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1188637834455445911 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7105560563681670427, guid: 688e4764ee768fb46bdf7a524e3d28c0, type: 3}
+  m_PrefabInstance: {fileID: 8278432500360627340}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57424adc4a7aa6341b45039534e8ae8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5523539566993133568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4487110831854294156, guid: 688e4764ee768fb46bdf7a524e3d28c0, type: 3}
