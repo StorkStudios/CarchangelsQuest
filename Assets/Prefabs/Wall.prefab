@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1136530111398566611}
   - component: {fileID: 4789786960456914008}
   - component: {fileID: 5642452790723045488}
+  - component: {fileID: 55330608226466276}
   m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
@@ -248,3 +249,19 @@ MonoBehaviour:
     - rid: 4090904090687307956
       type: {class: ShadowShape2DProvider_SpriteRenderer, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
+--- !u!114 &55330608226466276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7479039390862838331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
