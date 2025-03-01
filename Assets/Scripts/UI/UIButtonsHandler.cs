@@ -3,14 +3,28 @@ using UnityEngine.SceneManagement;
 
 public class UIButtonsHandler : MonoBehaviour
 {
-    
-    public void OnStartGame() {
-        SceneManager.LoadScene("City");
-    }
+
+    [SerializeField]
+    private GameObject creditsPane;
+    [SerializeField]
+    private GameObject settingsPane;
+    [SerializeField]
+    private GameObject mainMenuPane;
+
+    public void OnStartGame() => SceneManager.LoadScene("City");
     public void OnCredits() {
-        // TODO:
+        mainMenuPane.SetActive(false);
+        creditsPane.SetActive(true);
     }
-    public void OnExit() {
-        Application.Quit();
+    public void OnSettings() {
+        mainMenuPane.SetActive(false);
+        settingsPane.SetActive(true);
     }
+
+    public void OnBack() {
+        mainMenuPane.SetActive(true);
+        settingsPane.SetActive(false);
+        creditsPane.SetActive(false);
+    }
+    public void OnExit() => Application.Quit();
 }

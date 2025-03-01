@@ -26,7 +26,7 @@ public class UISpriteAnimation : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(Animate());
+        ActiveCoroutineContext.Instance.StartCoroutine(Animate());
     }
 
     public IEnumerator Animate() {
