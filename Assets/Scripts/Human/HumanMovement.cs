@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class HumanMovement : MonoBehaviour
 {
-    private enum State {Rotating, Walking}
+    private enum State {Rotating, Walking, Dead}
     [SerializeField]
     private RangeBoundariesFloat walkDuration;
 
@@ -29,13 +29,24 @@ public class HumanMovement : MonoBehaviour
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        if (TryGetComponent(out HumanDeath humanDeath))
+        {
+            humanDeath.Died += OnHumanDied;
+        }
 
         currentCoroutine = StartCoroutine(Walk());
     }
 
+    private void OnHumanDied()
+    {
+        state = State.Dead;
+        StopCoroutine(currentCoroutine);
+        currentCoroutine = null;
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (state == State.Rotating)
+        if (state == State.Rotating || state == State.Dead)
         {
             return;
         }
