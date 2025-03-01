@@ -178,6 +178,7 @@ MonoBehaviour:
     Min: 50
     Max: 100
   targetRotation: 0
+  state: 0
 --- !u!50 &1660668068438754519
 Rigidbody2D:
   serializedVersion: 5
@@ -190,7 +191,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 70
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0

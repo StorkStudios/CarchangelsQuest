@@ -92,7 +92,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1500
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -119,9 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5716f63ae7ab99142bdc9b81fe58d382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationForce: 10
+  accelerationForce: 15000
   steeringForce: 4
-  breakForce: 10
   driftFactor: 0.85
   breakDriftFactor: 0.99
   velocitySteerDivider: 4
