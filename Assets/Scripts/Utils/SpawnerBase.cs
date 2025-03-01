@@ -22,7 +22,11 @@ public class SpawnerBase : MonoBehaviour
     [SerializeField]
     private float gridSize;
 
+    [SerializeField]
+    private float pointSize;
+
     private Vector3[] gridCorners = new Vector3[4];
+
 
     private void OnValidate()
     {
@@ -41,7 +45,7 @@ public class SpawnerBase : MonoBehaviour
             {
                 float v = Mathf.PerlinNoise(x / noiseScale, y / noiseScale);
                 Vector2 position = new Vector2(x, y);
-                if (v > noiseThreshold && !Physics2D.OverlapCircle(position, 0.2f, LayerMask.GetMask("Wall")))
+                if (v > noiseThreshold && !Physics2D.OverlapCircle(position, pointSize, LayerMask.GetMask("Wall")))
                 {
                     spawnPoints.Points.Add(position);
                 }
@@ -51,7 +55,7 @@ public class SpawnerBase : MonoBehaviour
         AssetDatabase.SaveAssets();
     }
 
-    private void OnDrawGizmosSelected()
+    protected virtual void OnDrawGizmosSelected()
     {
         if (spawnPoints == null)
         {
@@ -64,13 +68,13 @@ public class SpawnerBase : MonoBehaviour
         {
             for (float y = gridBoundaries.Min.y; y < gridBoundaries.Max.y; y += gridSize)
             {
-                Gizmos.DrawWireSphere(new Vector3(x, y, 0), 0.2f);
+                Gizmos.DrawWireSphere(new Vector3(x, y, 0), pointSize);
             }
         }
         Gizmos.color = Color.green;
         foreach (Vector2 point in spawnPoints.Points)
         {
-            Gizmos.DrawWireSphere(new Vector3(point.x, point.y, 0), 0.2f);
+            Gizmos.DrawWireSphere(new Vector3(point.x, point.y, 0), pointSize);
         }
     }
 

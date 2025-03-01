@@ -245,12 +245,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ed99725e6b6642ba2c04c6b47df0a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  Player: {fileID: 0}
   engine: {fileID: 209644613917457740}
   steeringSensitivty: 1
   frontReverseStartRange: {fileID: 1881266156557329062}
   frontReverseEndRange: {fileID: 7853720525886665683}
   pathRecalculationDelay: 1
+  maxDistanceFromPlayer: 100
   state: 0
 --- !u!195 &7681773734060572143
 NavMeshAgent:

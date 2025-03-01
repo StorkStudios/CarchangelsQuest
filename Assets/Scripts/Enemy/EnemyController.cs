@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
 
     [Header("References")]
     [SerializeField]
-    private Transform player;
+    public Transform Player;
 
     [SerializeField]
     private CarEngine engine;
@@ -69,8 +69,9 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if ((transform.position - player.transform.position).magnitude > maxDistanceFromPlayer)
+        if ((transform.position - Player.transform.position).magnitude > maxDistanceFromPlayer)
         {
+            Debug.Log($"Enemy {gameObject.name} despawned");
             Despawned?.Invoke(this);
             Destroy(gameObject);
         }
@@ -131,7 +132,7 @@ public class EnemyController : MonoBehaviour
         }
 
         bool toPlayer = state == State.Chase || state == State.ReverseChase;
-        float angleTowardsTarget = Vector2.SignedAngle(transform.up, (toPlayer ? player.position : waypoint) - transform.position);
+        float angleTowardsTarget = Vector2.SignedAngle(transform.up, (toPlayer ? Player.position : waypoint) - transform.position);
         engine.steeringWheel.Value = Mathf.Clamp(angleTowardsTarget * steeringSensitivty, -1, 1) * ((state == State.ReverseChase || state == State.ReverseWaypoint) ? -1 : 1);
     }
 
@@ -140,7 +141,7 @@ public class EnemyController : MonoBehaviour
         while (state == State.GoingToWaypoint || state == State.ReverseWaypoint)
         {
             agent.enabled = true;
-            if (agent.CalculatePath(player.position, path))
+            if (agent.CalculatePath(Player.position, path))
             {
                 waypoint = path.corners[1];
             }
@@ -155,8 +156,8 @@ public class EnemyController : MonoBehaviour
 
     private int WallRaycast()
     {
-        float raycastLength = (player.position - transform.position).magnitude;
-        return Physics2D.Raycast(transform.position, player.position - transform.position, wallContactFilter, raycastResults, raycastLength);
+        float raycastLength = (Player.position - transform.position).magnitude;
+        return Physics2D.Raycast(transform.position, Player.position - transform.position, wallContactFilter, raycastResults, raycastLength);
     }
 
     private void PrintRaycastResults(int count)
@@ -178,6 +179,6 @@ public class EnemyController : MonoBehaviour
         Gizmos.matrix = Matrix4x4.identity;
         Gizmos.color = Color.magenta;
         bool toPlayer = state == State.Chase || state == State.ReverseChase;
-        Gizmos.DrawLine(transform.position, toPlayer ? player.position : waypoint);
+        Gizmos.DrawLine(transform.position, toPlayer ? Player.position : waypoint);
     }
 }
