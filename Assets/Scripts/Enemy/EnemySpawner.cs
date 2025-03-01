@@ -18,7 +18,7 @@ public class EnemySpawner : SpawnerBase
     private float enemySpawnRange;
 
     [SerializeField]
-    private Transform player;
+    private PlayerTargetPoints player;
 
     [SerializeField]
     private float optimalEnemySpawnAngle;
@@ -44,14 +44,14 @@ public class EnemySpawner : SpawnerBase
         {
             Vector3 spawnpoint = GetEnemySpawnPoint();
             Debug.Log($"Spawning enemy at {spawnpoint}");
-            SpawnEnemy(spawnpoint, Vector2.Angle(Vector2.up, player.position - spawnpoint));
+            SpawnEnemy(spawnpoint, Vector2.Angle(Vector2.up, player.transform.position - spawnpoint));
             yield return new WaitForSeconds(enemySpawnDelay);
         }
     }
 
     private Vector3 GetEnemySpawnPoint()
     {
-        HashSet<Collider2D> collidersInRange = Physics2D.OverlapCircleAll(player.position, enemySpawnRange, LayerMask.GetMask("EnemySpawnPoints")).ToHashSet();
+        HashSet<Collider2D> collidersInRange = Physics2D.OverlapCircleAll(player.transform.position, enemySpawnRange, LayerMask.GetMask("EnemySpawnPoints")).ToHashSet();
         var corners = (Camera.main.ViewportToWorldPoint(Vector3.zero), Camera.main.ViewportToWorldPoint(Vector3.one));
         HashSet<Collider2D> collidersOnScreen = Physics2D.OverlapAreaAll(corners.Item1, corners.Item2, LayerMask.GetMask("EnemySpawnPoints")).ToHashSet();
         collidersInRange.ExceptWith(collidersOnScreen);
@@ -59,15 +59,29 @@ public class EnemySpawner : SpawnerBase
         {
             Debug.LogError("No spawnpoint for enemy found. Spawn range should be bigger");
         }
-        return collidersInRange.OrderBy(c => Mathf.Abs(Vector2.Angle(player.up, c.transform.position - player.position) - optimalEnemySpawnAngle)).First().transform.position;
+        return collidersInRange.OrderBy(c => Mathf.Abs(Vector2.Angle(player.transform.up, c.transform.position - player.transform.position) - optimalEnemySpawnAngle)).First().transform.position;
     }
 
     private void SpawnEnemy(Vector3 position, float rotation)
     {
         EnemyController enemy = Instantiate(enemyPrefab, position, Quaternion.Euler(0, 0, rotation), enemiesParent).GetComponent<EnemyController>();
-        enemy.Player = player;
+        enemy.Player = GetTargetPoint();
         enemies.Add(enemy);
         enemy.Despawned += OnEnemyDespawn;
+    }
+
+    private Transform GetTargetPoint()
+    {
+        int rand = Random.Range(0, 5);
+        if (rand == 0)
+        {
+            return player.LeftTarget;
+        }
+        if (rand == 1)
+        {
+            return player.RightTarget;
+        }
+        return player.transform;
     }
 
     private void OnEnemyDespawn(EnemyController enemy)
@@ -81,6 +95,6 @@ public class EnemySpawner : SpawnerBase
         base.OnDrawGizmosSelected();
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(player.position, enemySpawnRange);
+        Gizmos.DrawWireSphere(player.transform.position, enemySpawnRange);
     }
 }

@@ -103,8 +103,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 8009921671949060482, guid: 825f5d45d8e78313c931b5df3d54fb53, type: 3}
   enemiesParent: {fileID: 0}
   enemySpawnDelay: 20
-  enemySpawnRange: 0
-  player: {fileID: 5523539566993133568}
+  enemySpawnRange: 80
+  player: {fileID: 5476989717517060498}
   optimalEnemySpawnAngle: 30
 --- !u!1 &5055054189532815442
 GameObject:
@@ -600,6 +600,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57424adc4a7aa6341b45039534e8ae8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5476989717517060498 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4530844832777178398, guid: 688e4764ee768fb46bdf7a524e3d28c0, type: 3}
+  m_PrefabInstance: {fileID: 8278432500360627340}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 582e491c4a750ae9c92184169fd1e29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &5523539566993133568 stripped
