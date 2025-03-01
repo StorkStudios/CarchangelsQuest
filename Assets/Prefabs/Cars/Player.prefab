@@ -466,18 +466,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 7546704447096744818, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
-      propertyPath: backLights.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7546704447096744818, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
-      propertyPath: 'backLights.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8789986887540086593}
-    - target: {fileID: 7546704447096744818, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
-      propertyPath: 'backLights.Array.data[1]'
-      value: 
-      objectReference: {fileID: 7925953549807876318}
     - target: {fileID: 8139406173398090858, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -528,25 +516,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8139406173398090858, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
   m_PrefabInstance: {fileID: 7670590520930661826}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7925953549807876318 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 544317297104751900, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
-  m_PrefabInstance: {fileID: 7670590520930661826}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8789986887540086593 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1409389122512478851, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
-  m_PrefabInstance: {fileID: 7670590520930661826}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

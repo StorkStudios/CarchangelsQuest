@@ -228,6 +228,11 @@ MonoBehaviour:
   frontWheels:
   - {fileID: 467967240223102600}
   - {fileID: 3631500281613677385}
+  backLights:
+  - {fileID: 1409389122512478851}
+  - {fileID: 544317297104751900}
+  backLightIntensityBreaking: 7
+  backLightIntensityNormal: 3
   wheelSteerSpeed: 360
   wheelSteerAngle: 30
 --- !u!1 &1255241536692379865
