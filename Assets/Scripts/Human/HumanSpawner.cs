@@ -41,6 +41,11 @@ public class HumanSpawner : MonoBehaviour
 
     private IEnumerator Start()
     {
+        if (spawnPoints == null || spawnPoints.SpawnPoints == null || spawnPoints.SpawnPoints.Count == 0)
+        {
+            Debug.LogError("Human spawn points not generated. Humans will not be spawned");
+            yield break;
+        }
         shuffledHumanPositions = spawnPoints.SpawnPoints.Shuffled();
         nextHumanPosition = shuffledHumanPositions.GetEnumerator();
         nextHumanPosition.MoveNext();
