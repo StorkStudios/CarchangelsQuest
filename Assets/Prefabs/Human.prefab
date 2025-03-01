@@ -129,6 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5157636602731081828}
+  - component: {fileID: 4500990738042851043}
   m_Layer: 0
   m_Name: HumanSprite
   m_TagString: Untagged
@@ -154,6 +155,30 @@ Transform:
   - {fileID: 7846279125552697478}
   m_Father: {fileID: 7906565602807265066}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4500990738042851043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2584575619732923071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca46f11ea46427884bf96a622ebae9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinColorCorners:
+  - {r: 0.44949627, g: 0.3848442, b: 0, a: 1}
+  - {r: 0.35218036, g: 0.1182367, b: 0, a: 1}
+  - {r: 1, g: 0.9039356, b: 0.763597, a: 1}
+  hairColorCorners:
+  - {r: 0.9286436, g: 0.86553925, b: 0, a: 1}
+  - {r: 0.8627451, g: 0.18995537, b: 0, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  hair: {fileID: 8053043531028331507}
+  shirt: {fileID: 3801534947300898307}
+  skin: {fileID: 7494686455241954998}
 --- !u!1 &3197793789760140493
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +210,7 @@ Transform:
   m_GameObject: {fileID: 3197793789760140493}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
