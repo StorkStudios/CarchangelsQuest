@@ -12,9 +12,11 @@ public class CarEngine : MonoBehaviour
     [SerializeField]
     private float breakDriftFactor;
     [SerializeField]
-    private float velocitySteerDivider;
+    private AnimationCurve steeringCurve;
     [SerializeField]
     private float handbreakLinearDamping;
+    [SerializeField]
+    private float handbreakGasMultiplier;
     [SerializeField]
     private float maxForwardSpeed;
     [SerializeField]
@@ -59,7 +61,7 @@ public class CarEngine : MonoBehaviour
         Vector2 newLateralVelocity = lateralVelocity * (handbreak.Value ? breakDriftFactor : driftFactor);
         rigidbody.linearVelocity = forwardVelocity + newLateralVelocity;
 
-        float carSteerAmount = Mathf.Clamp01(rigidbody.linearVelocity.magnitude / velocitySteerDivider);
+        float carSteerAmount = steeringCurve.EvaluateUnclamped(rigidbody.linearVelocity.magnitude);
         float rotationAmount = steeringWheel.Value * steeringForce * carSteerAmount;
         if (forwardSpeed >= 0)
         {
@@ -86,12 +88,8 @@ public class CarEngine : MonoBehaviour
             return;
         }
 
-        if (handbreak.Value)
-        {
-            return;
-        }
-
         Vector2 engineForce = transform.up * accelerationForce * gasPedal.Value;
+        engineForce *= (handbreak.Value ? handbreakGasMultiplier : 1);
         rigidbody.AddForce(engineForce);
     }
 }

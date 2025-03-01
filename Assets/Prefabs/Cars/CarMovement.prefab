@@ -93,7 +93,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1500
-  m_LinearDamping: 0
+  m_LinearDamping: 1
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 5f21d60ced39f1149a8e397e4b360391, type: 2}
@@ -119,11 +119,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5716f63ae7ab99142bdc9b81fe58d382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationForce: 15000
-  steeringForce: 4
+  accelerationForce: 200000
+  steeringForce: 3
   driftFactor: 0.85
   breakDriftFactor: 0.99
-  velocitySteerDivider: 4
-  handbreakLinearDamping: 2
+  steeringCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.010724252
+      outSlope: 0.010724252
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.3418801
+    - serializedVersion: 3
+      time: 5
+      value: 0.5
+      inSlope: 0.07609327
+      outSlope: 0.07609327
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.17714234
+      outWeight: 0.19531623
+    - serializedVersion: 3
+      time: 27
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  handbreakLinearDamping: 1
+  handbreakGasMultiplier: 0.5
   maxForwardSpeed: 27
   maxReverseSpeed: 13.5
