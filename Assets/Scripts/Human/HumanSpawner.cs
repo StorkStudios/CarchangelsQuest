@@ -44,7 +44,7 @@ public class HumanSpawner : MonoBehaviour
 
         for (int i = 0; i < startHumansCount; i++)
         {
-            SpawnHuman();
+            SpawnHuman(false);
         }
 
         while (true)
@@ -54,9 +54,10 @@ public class HumanSpawner : MonoBehaviour
         }
     }
 
-    private void SpawnHuman()
+    private void SpawnHuman(bool notInVisionRange = true)
     {
-        while (Physics2D.OverlapCircle(nextHumanPosition.Current, 0.2f, LayerMask.GetMask("Wall")))
+        while (Physics2D.OverlapCircle(nextHumanPosition.Current, 0.2f, LayerMask.GetMask("Wall")) ||
+            (notInVisionRange && IsPointVisible(nextHumanPosition.Current)))
         {
             if (!nextHumanPosition.MoveNext())
             {
@@ -120,5 +121,11 @@ public class HumanSpawner : MonoBehaviour
         {
             Gizmos.DrawWireSphere(new Vector3(point.x, point.y, 0), 0.2f);
         }
+    }
+
+    private bool IsPointVisible(Vector3 point)
+    {
+        Vector3 viewportPoint = Camera.main.WorldToViewportPoint(point);
+        return (new Rect(0, 0, 1, 1)).Contains(viewportPoint);
     }
 }
