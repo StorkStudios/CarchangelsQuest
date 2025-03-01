@@ -34,7 +34,7 @@ public class HumanDeath : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag(Tags.Player))
         {
             rigidbody.AddForce(collision.relativeVelocity.normalized * hitForce);
             Died?.Invoke();
