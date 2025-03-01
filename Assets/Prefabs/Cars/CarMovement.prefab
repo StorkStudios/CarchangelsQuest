@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5716f63ae7ab99142bdc9b81fe58d382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationForce: 200000
+  accelerationForce: 25000
   steeringForce: 3
   driftFactor: 0.85
   breakDriftFactor: 0.99
@@ -160,3 +160,4 @@ MonoBehaviour:
   handbreakGasMultiplier: 0.5
   maxForwardSpeed: 27
   maxReverseSpeed: 13.5
+  minLatheralDriftDetectionSpeed: 4

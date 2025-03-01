@@ -21,10 +21,22 @@ public class CarEngine : MonoBehaviour
     private float maxForwardSpeed;
     [SerializeField]
     private float maxReverseSpeed;
+    [SerializeField]
+    private float minLatheralDriftDetectionSpeed;
 
     public readonly ObservableVariable<float> steeringWheel = new ObservableVariable<float>(0);
     public readonly ObservableVariable<float> gasPedal = new ObservableVariable<float>(0);
     public readonly ObservableVariable<bool> handbreak = new ObservableVariable<bool>(false);
+
+    public event ObservableVariable<bool>.ValueChangedDelegate IsDriftingChanged
+    {
+        add => isDrifting.ValueChanged += value;
+        remove => isDrifting.ValueChanged -= value;
+    }
+
+    public bool IsDrifting => isDrifting.Value;
+
+    private readonly ObservableVariable<bool> isDrifting = new ObservableVariable<bool>(false);
 
     private float rotationAngle;
     private float baseDamping;
@@ -72,6 +84,8 @@ public class CarEngine : MonoBehaviour
             rotationAngle -= rotationAmount;
         }
         rigidbody.MoveRotation(rotationAngle);
+
+        isDrifting.Value = CheckDrift();
     }
 
     private void ApplyEngineForce()
@@ -91,5 +105,29 @@ public class CarEngine : MonoBehaviour
         Vector2 engineForce = transform.up * accelerationForce * gasPedal.Value;
         engineForce *= (handbreak.Value ? handbreakGasMultiplier : 1);
         rigidbody.AddForce(engineForce);
+    }
+
+    private bool CheckDrift()
+    {
+        float forwardSpeed = Vector2.Dot(rigidbody.linearVelocity, transform.up);
+        float lateralSpeed = Vector2.Dot(rigidbody.linearVelocity, transform.right);
+
+        if ((forwardSpeed > 0 && gasPedal.Value < 0) ||
+            (forwardSpeed < 0 && gasPedal.Value > 0))
+        {
+            return true;
+        }
+
+        if (handbreak.Value)
+        {
+            return true;
+        }
+
+        if (Mathf.Abs(lateralSpeed) > minLatheralDriftDetectionSpeed)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
