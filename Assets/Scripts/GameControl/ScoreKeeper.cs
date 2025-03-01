@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ScoreKeeper : Singleton<ScoreKeeper>
 {
-    private ObservableVariable<float> score = new(0);
+    private readonly ObservableVariable<float> score = new(0);
 
-    private ObservableVariable<int> humansKilled = new(0);
+    private readonly ObservableVariable<int> humansKilled = new(0);
 
-    private ObservableVariable<float> averageSpeed = new(0);
+    private readonly ObservableVariable<float> averageSpeed = new(0);
 
-    private LinkedList<float> speedHistory = new();
+    private readonly LinkedList<float> speedHistory = new();
     private float speedHistorySum = 0;
 
     [SerializeField]

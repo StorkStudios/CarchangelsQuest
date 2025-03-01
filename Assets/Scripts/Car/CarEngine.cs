@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -24,6 +25,9 @@ public class CarEngine : MonoBehaviour
     [SerializeField]
     private float minLatheralDriftDetectionSpeed;
 
+    [SerializeField]
+    private float breakingSpeedThreshold = 2;
+
     public readonly ObservableVariable<float> steeringWheel = new ObservableVariable<float>(0);
     public readonly ObservableVariable<float> gasPedal = new ObservableVariable<float>(0);
     public readonly ObservableVariable<bool> handbreak = new ObservableVariable<bool>(false);
@@ -37,6 +41,17 @@ public class CarEngine : MonoBehaviour
     public bool IsDrifting => isDrifting.Value;
 
     private readonly ObservableVariable<bool> isDrifting = new ObservableVariable<bool>(false);
+    
+    public event ObservableVariable<bool>.ValueChangedDelegate IsBreakingChanged
+    {
+        add => isBreaking.ValueChanged += value;
+        remove => isBreaking.ValueChanged -= value;
+    }
+
+    public bool IsBreaking => isBreaking.Value;
+
+    private readonly ObservableVariable<bool> isBreaking = new ObservableVariable<bool>(false);
+    
 
     private float rotationAngle;
     private float baseDamping;
@@ -85,7 +100,8 @@ public class CarEngine : MonoBehaviour
         }
         rigidbody.MoveRotation(rotationAngle);
 
-        isDrifting.Value = CheckDrift();
+        isBreaking.Value = CheckIsBreaking();
+        isDrifting.Value = isBreaking.Value || CheckDrift();
     }
 
     private void ApplyEngineForce()
@@ -109,14 +125,7 @@ public class CarEngine : MonoBehaviour
 
     private bool CheckDrift()
     {
-        float forwardSpeed = Vector2.Dot(rigidbody.linearVelocity, transform.up);
         float lateralSpeed = Vector2.Dot(rigidbody.linearVelocity, transform.right);
-
-        if ((forwardSpeed > 0 && gasPedal.Value < 0) ||
-            (forwardSpeed < 0 && gasPedal.Value > 0))
-        {
-            return true;
-        }
 
         if (handbreak.Value)
         {
@@ -129,5 +138,12 @@ public class CarEngine : MonoBehaviour
         }
 
         return false;
+    }
+
+    private bool CheckIsBreaking()
+    {
+        float forwardSpeed = Vector2.Dot(rigidbody.linearVelocity, transform.up);
+        return ((forwardSpeed > 0 && gasPedal.Value < 0) ||
+            (forwardSpeed < 0 && gasPedal.Value > 0)) && rigidbody.linearVelocity.magnitude > breakingSpeedThreshold;
     }
 }
