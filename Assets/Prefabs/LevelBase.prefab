@@ -50,15 +50,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078e16e5474ba088796c29fd24670711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  humanPrefab: {fileID: 0}
-  humanSpawnDelay: 0
+  humanPrefab: {fileID: 3197793789760140493, guid: 547a2d99ecf5be0a7abe8b119dce46d6, type: 3}
+  humanSpawnDelay: 5
+  startHumansCount: 10
   spawnPoints: {fileID: 0}
   gridBoundaries:
     Min: {x: -30, y: -20}
     Max: {x: 30, y: 20}
   noiseThreshold: 0.5
   noiseScale: 3
-  gridSize: 1.74
+  gridSize: 3.37
 --- !u!114 &1209819084086620706
 MonoBehaviour:
   m_ObjectHideFlags: 0

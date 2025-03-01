@@ -11,6 +11,9 @@ public class HumanSpawner : MonoBehaviour
     [SerializeField]
     private float humanSpawnDelay;
 
+    [SerializeField]
+    private float startHumansCount;
+
     [Header("Points generation")]
     [SerializeField]
     [EditObjectInInspector]
@@ -29,15 +32,45 @@ public class HumanSpawner : MonoBehaviour
     private float gridSize;
 
     private Vector3[] gridCorners = new Vector3[4];
-    private int navmeshAreaMask;
+
+    private IEnumerable<Vector2> shuffledHumanPositions;
+    private IEnumerator<Vector2> nextHumanPosition;
 
     private IEnumerator Start()
     {
-        navmeshAreaMask = 1 << NavMesh.GetAreaFromName("Walkable");
+        shuffledHumanPositions = spawnPoints.SpawnPoints.Shuffled();
+        nextHumanPosition = shuffledHumanPositions.GetEnumerator();
+        nextHumanPosition.MoveNext();
+
+        for (int i = 0; i < startHumansCount; i++)
+        {
+            SpawnHuman();
+        }
 
         while (true)
         {
             yield return new WaitForSeconds(humanSpawnDelay);
+            SpawnHuman();
+        }
+    }
+
+    private void SpawnHuman()
+    {
+        while (Physics2D.OverlapCircle(nextHumanPosition.Current, 0.2f, LayerMask.GetMask("Wall")))
+        {
+            if (!nextHumanPosition.MoveNext())
+            {
+                Debug.Log("Human spawn points list wrapped");
+                nextHumanPosition = shuffledHumanPositions.GetEnumerator();
+                nextHumanPosition.MoveNext();
+            }
+        }
+        Instantiate(humanPrefab, nextHumanPosition.Current, Quaternion.Euler(0, 0, Random.Range(0, 359)));
+        if (!nextHumanPosition.MoveNext())
+        {
+            Debug.Log("Human spawn points list wrapped");
+            nextHumanPosition = shuffledHumanPositions.GetEnumerator();
+            nextHumanPosition.MoveNext();
         }
     }
 
@@ -68,6 +101,11 @@ public class HumanSpawner : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        if (spawnPoints == null)
+        {
+            return;
+        }
+
         Gizmos.color = Color.red;
         Gizmos.DrawLineStrip(gridCorners, true);
         for (float x = gridBoundaries.Min.x; x < gridBoundaries.Max.x; x += gridSize)
