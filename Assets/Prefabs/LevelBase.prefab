@@ -53,6 +53,7 @@ MonoBehaviour:
   humanPrefab: {fileID: 3197793789760140493, guid: 547a2d99ecf5be0a7abe8b119dce46d6, type: 3}
   humanSpawnDelay: 5
   startHumansCount: 10
+  humansParent: {fileID: 0}
   spawnPoints: {fileID: 0}
   gridBoundaries:
     Min: {x: -30, y: -20}

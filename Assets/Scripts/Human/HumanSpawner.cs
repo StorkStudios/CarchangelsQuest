@@ -14,6 +14,9 @@ public class HumanSpawner : MonoBehaviour
     [SerializeField]
     private float startHumansCount;
 
+    [SerializeField]
+    private Transform humansParent;
+
     [Header("Points generation")]
     [SerializeField]
     [EditObjectInInspector]
@@ -66,7 +69,7 @@ public class HumanSpawner : MonoBehaviour
                 nextHumanPosition.MoveNext();
             }
         }
-        Instantiate(humanPrefab, nextHumanPosition.Current, Quaternion.Euler(0, 0, Random.Range(0, 359)));
+        Instantiate(humanPrefab, nextHumanPosition.Current, Quaternion.Euler(0, 0, Random.Range(0, 359)), humansParent);
         if (!nextHumanPosition.MoveNext())
         {
             Debug.Log("Human spawn points list wrapped");
@@ -85,7 +88,7 @@ public class HumanSpawner : MonoBehaviour
 
     public void GenerateSpawnPoints()
     {
-        spawnPoints.SpawnPoints.Clear();
+        spawnPoints.SpawnPoints = new List<Vector2>();
         for (float x = gridBoundaries.Min.x; x < gridBoundaries.Max.x; x += gridSize)
         {
             for (float y = gridBoundaries.Min.y; y < gridBoundaries.Max.y; y += gridSize)
