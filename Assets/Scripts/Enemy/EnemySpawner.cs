@@ -27,7 +27,8 @@ public class EnemySpawner : SpawnerBase
 
     private IEnumerator Start()
     {
-        GameObject spawnTrigger = new GameObject();
+        GameObject spawnTrigger = new GameObject("EnemySpawnPoint");
+        spawnTrigger.transform.parent = enemiesParent;
         CircleCollider2D collider = spawnTrigger.AddComponent<CircleCollider2D>();
         collider.isTrigger = true;
         collider.radius = 1;
