@@ -270,6 +270,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 89c5281d9903369a198241d62a3168d4, type: 3}
   - {fileID: 8300000, guid: 610e32e83bee47e3c8918e2f0bf1e8f8, type: 3}
   - {fileID: 8300000, guid: 70d7c3e150904a7848244353d48a8bac, type: 3}
+  loreClips:
+  - {fileID: 8300000, guid: f01544a2f8f7e2973afc71ea368aaa58, type: 3}
+  - {fileID: 8300000, guid: 0fd5e6d85d996b787943cc79d7f75f74, type: 3}
+  - {fileID: 8300000, guid: c3f1252528d2ebb6198fcf649d8dc9af, type: 3}
+  - {fileID: 8300000, guid: 94395f838eb7db2ae912223033b646f1, type: 3}
+  - {fileID: 8300000, guid: eab2b88bb5570cb88b6885d79b01ab19, type: 3}
+  - {fileID: 8300000, guid: d4cdf9b8de494b2c4b37880d527a98ce, type: 3}
+  - {fileID: 8300000, guid: b7f8d807c964f68ffa079b1497f97c00, type: 3}
+  - {fileID: 8300000, guid: d4371899c6f84fff5b4507c6196616dc, type: 3}
+  - {fileID: 8300000, guid: b6f78ef55141c340b9d370ae4eb949c2, type: 3}
+  - {fileID: 8300000, guid: d4e3d2c12f0c4fe9b83e6441daa86482, type: 3}
+  loreChance: 0.7
   clipDelay: 10
 --- !u!1 &4341416274734565458
 GameObject:

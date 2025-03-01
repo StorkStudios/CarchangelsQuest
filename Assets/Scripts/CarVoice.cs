@@ -5,6 +5,7 @@ using System.Collections;
 [RequireComponent(typeof(AudioSource))]
 public class CarVoice : MonoBehaviour
 {
+    [Header("Clips")]
     [SerializeField]
     private List<AudioClip> gameStartClips;
 
@@ -12,11 +13,20 @@ public class CarVoice : MonoBehaviour
     private List<AudioClip> randomClips;
 
     [SerializeField]
+    private List<AudioClip> loreClips;
+
+    [Header("Config")]
+    [SerializeField]
+    private float loreChance;
+
+    [SerializeField]
     private float clipDelay;
 
     private AudioSource audioSource;
     private IEnumerable<AudioClip> randomClipsShuffled;
     private IEnumerator<AudioClip> randomClipsEnumerator;
+    private IEnumerable<AudioClip> loreClipsShuffled;
+    private IEnumerator<AudioClip> loreClipsEnumerator;
 
     private void Start()
     {
@@ -26,6 +36,9 @@ public class CarVoice : MonoBehaviour
         randomClipsShuffled = randomClips.Shuffled();
         randomClipsEnumerator = randomClipsShuffled.GetEnumerator();
         randomClipsEnumerator.MoveNext();
+        loreClipsShuffled = loreClips.Shuffled();
+        loreClipsEnumerator = loreClipsShuffled.GetEnumerator();
+        loreClipsEnumerator.MoveNext();
 
         StartCoroutine(CarVoiceMainCoroutine());
     }
@@ -37,12 +50,24 @@ public class CarVoice : MonoBehaviour
             yield return new WaitWhile(() => audioSource.isPlaying);
             yield return new WaitForSeconds(clipDelay);
 
-            audioSource.PlayOneShot(randomClipsEnumerator.Current);
-            if (!randomClipsEnumerator.MoveNext())
+            if (Random.value <= loreChance)
             {
-                randomClipsEnumerator = randomClipsShuffled.GetEnumerator();
-                randomClipsEnumerator.MoveNext();
+                PlayNextClip(loreClipsShuffled, loreClipsEnumerator);
             }
+            else
+            {
+                PlayNextClip(randomClipsShuffled, randomClipsEnumerator);
+            }
+        }
+    }
+
+    private void PlayNextClip(IEnumerable<AudioClip> enumerable, IEnumerator<AudioClip> enumerator)
+    {
+        audioSource.PlayOneShot(enumerator.Current);
+        if (!enumerator.MoveNext())
+        {
+            enumerator = enumerable.GetEnumerator();
+            enumerator.MoveNext();
         }
     }
 }
