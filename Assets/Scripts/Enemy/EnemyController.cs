@@ -18,23 +18,37 @@ public class EnemyController : MonoBehaviour
     private float steeringSensitivty;
 
     [SerializeField]
-    private Transform frontSensor;
+    private Transform frontReverseStartRange;
+
+    [SerializeField]
+    private Transform frontReverseEndRange;
 
     [SerializeField]
     [ReadOnly]
     private State state = State.Chase;
 
+    private void Start()
+    {
+        engine.gasPedal.Value = 1;
+    }    
+
     private void Update()
     {
-        if (Physics2D.OverlapBox(frontSensor.position, frontSensor.localScale, frontSensor.rotation.eulerAngles.z, LayerMask.GetMask("Wall")))
+        if (state == State.Chase)
         {
-            state = State.Reverse;
-            engine.gasPedal.Value = -1;
+            if (Physics2D.OverlapBox(frontReverseStartRange.position, frontReverseStartRange.localScale, frontReverseStartRange.rotation.eulerAngles.z, LayerMask.GetMask("Wall")))
+            {
+                state = State.Reverse;
+                engine.gasPedal.Value = -1;
+            }
         }
         else
         {
-            state = State.Chase;
-            engine.gasPedal.Value = 1;
+            if (!Physics2D.OverlapBox(frontReverseEndRange.position, frontReverseEndRange.localScale, frontReverseEndRange.rotation.eulerAngles.z, LayerMask.GetMask("Wall")))
+            {
+                state = State.Chase;
+                engine.gasPedal.Value = 1;
+            }
         }
         float angleTowardsTarget = Vector2.SignedAngle(transform.up, target.position - transform.position);
         engine.steeringWheel.Value = Mathf.Clamp(angleTowardsTarget * steeringSensitivty, -1, 1) * ((state == State.Reverse) ? -1 : 1);
@@ -42,8 +56,11 @@ public class EnemyController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
-        Gizmos.matrix = frontSensor.localToWorldMatrix;
+        Gizmos.color = Color.red;
+        Gizmos.matrix = frontReverseStartRange.localToWorldMatrix;
+        Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
+        Gizmos.color = Color.yellow;
+        Gizmos.matrix = frontReverseEndRange.localToWorldMatrix;
         Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
     }
 }

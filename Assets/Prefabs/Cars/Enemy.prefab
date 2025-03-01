@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5036601187118597247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7853720525886665683}
+  m_Layer: 0
+  m_Name: ReverseEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7853720525886665683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5036601187118597247}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.19, z: 0}
+  m_LocalScale: {x: 1.9454887, y: 1.675498, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5539199688182627362}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6883731088713413207
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1881266156557329062}
   m_Layer: 0
-  m_Name: FrontSensor
+  m_Name: ReverseStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,8 +56,8 @@ Transform:
   m_GameObject: {fileID: 6883731088713413207}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.85, z: 0}
-  m_LocalScale: {x: 1.7950625, y: 0.95090693, z: 1}
+  m_LocalPosition: {x: 0, y: 1.72, z: 0}
+  m_LocalScale: {x: 1.4430687, y: 0.49345008, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5539199688182627362}
@@ -162,6 +193,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1405151292587668695, guid: 1bf69caf4ef383548b8432c05b49bf2d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1881266156557329062}
+    - targetCorrespondingSourceObject: {fileID: 1405151292587668695, guid: 1bf69caf4ef383548b8432c05b49bf2d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7853720525886665683}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3492502139722269047, guid: 1bf69caf4ef383548b8432c05b49bf2d, type: 3}
       insertIndex: -1
@@ -203,5 +237,6 @@ MonoBehaviour:
   target: {fileID: 0}
   engine: {fileID: 209644613917457740}
   steeringSensitivty: 1
-  frontSensor: {fileID: 1881266156557329062}
+  frontReverseStartRange: {fileID: 1881266156557329062}
+  frontReverseEndRange: {fileID: 7853720525886665683}
   state: 0
