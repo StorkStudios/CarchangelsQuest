@@ -20,11 +20,23 @@ public class HumanRandomizer : MonoBehaviour
     [SerializeField]
     private SpriteRenderer skin;
 
+    [SerializeField]
+    private SpriteRenderer corpseHair;
+    [SerializeField]
+    private SpriteRenderer corpseShirt;
+    [SerializeField]
+    private SpriteRenderer corpseSkin;
+
     private void Start()
     {
         shirt.color = Random.ColorHSV(0, 1, 0, 1, 0, 1, 1, 1);
+        corpseShirt.color = shirt.color;
+
         hair.color = GetColorCombination(hairColorCorners);
+        corpseHair.color = hair.color;
+
         skin.color = GetColorCombination(skinColorCorners);
+        corpseSkin.color = skin.color;
     }
 
     private Color GetColorCombination(List<Color> colors)
