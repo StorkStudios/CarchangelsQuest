@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(TrailRenderer))]
 public class HumanDeath : MonoBehaviour
 {
     [SerializeField]
@@ -20,16 +19,16 @@ public class HumanDeath : MonoBehaviour
     private Transform bloodSprite;
     [SerializeField]
     private float bloodShowDuration;
+    [SerializeField]
+    private TrailRenderer trailRenderer;
 
     public event System.Action Died;
 
     private Rigidbody2D rigidbody;
-    private TrailRenderer trailRenderer;
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        trailRenderer = GetComponent<TrailRenderer>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
