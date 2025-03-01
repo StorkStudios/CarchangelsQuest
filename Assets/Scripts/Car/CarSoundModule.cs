@@ -35,6 +35,7 @@ public class CarSoundModule : MonoBehaviour
     private void Start()
     {
         engine = GetComponentInParent<CarEngine>();
+        engineRunning.pitch = enginePitchBySpeed.Evaluate(0);
         engine.IsDriftingChanged += OnIsDriftingChanged;
         engine.horn.ValueChanged += OnHornChanged;
     }
