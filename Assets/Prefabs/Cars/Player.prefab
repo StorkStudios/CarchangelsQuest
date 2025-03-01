@@ -1,5 +1,89 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &61922926463146493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3762115237982602558}
+  - component: {fileID: 6902848489856744405}
+  - component: {fileID: 7551339403457241704}
+  m_Layer: 8
+  m_Name: PlayerLoser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3762115237982602558
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61922926463146493}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4487110831854294156}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &6902848489856744405
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61922926463146493}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 2.7
+--- !u!114 &7551339403457241704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61922926463146493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d666de503281eff18969141fef9c4ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minVelocityThreshold: 1
+  catchProgessIncrementFactor: 1
+  catchProgessDecrementFactor: 1
 --- !u!1 &3130161590089660873
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +681,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1405151292587668695, guid: 1bf69caf4ef383548b8432c05b49bf2d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7023354799855976066}
+    - targetCorrespondingSourceObject: {fileID: 1405151292587668695, guid: 1bf69caf4ef383548b8432c05b49bf2d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3762115237982602558}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3492502139722269047, guid: 1bf69caf4ef383548b8432c05b49bf2d, type: 3}
       insertIndex: -1
