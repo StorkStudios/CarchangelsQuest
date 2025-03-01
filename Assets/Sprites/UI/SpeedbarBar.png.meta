@@ -459,7 +459,21 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SpeedbarBar_0: 3747591001102929756
+      SpeedbarBar_1: 6360223007779113824
+      SpeedbarBar_10: 7974166526690111404
+      SpeedbarBar_11: 4681369658828651370
+      SpeedbarBar_12: -1659514458872928048
+      SpeedbarBar_13: 3620376823458301545
+      SpeedbarBar_2: -2975200483916458052
+      SpeedbarBar_3: -9174135170104099654
+      SpeedbarBar_4: 6270862982447556130
+      SpeedbarBar_5: -3177414177218848310
+      SpeedbarBar_6: 6974734401036788343
+      SpeedbarBar_7: -5383530958787871209
+      SpeedbarBar_8: 22159802748917160
+      SpeedbarBar_9: -6622894721256068243
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

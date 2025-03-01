@@ -31,6 +31,7 @@ public class CarEngine : MonoBehaviour
     public readonly ObservableVariable<float> steeringWheel = new ObservableVariable<float>(0);
     public readonly ObservableVariable<float> gasPedal = new ObservableVariable<float>(0);
     public readonly ObservableVariable<bool> handbreak = new ObservableVariable<bool>(false);
+    public readonly ObservableVariable<bool> horn = new ObservableVariable<bool>(false);
 
     public event ObservableVariable<bool>.ValueChangedDelegate IsDriftingChanged
     {
@@ -52,6 +53,8 @@ public class CarEngine : MonoBehaviour
 
     private readonly ObservableVariable<bool> isBreaking = new ObservableVariable<bool>(false);
     
+    public float ForwardSpeed => Vector2.Dot(rigidbody.linearVelocity, transform.up);
+    public float MaxSpeed => maxForwardSpeed;
 
     private float rotationAngle;
     private float baseDamping;
@@ -82,7 +85,7 @@ public class CarEngine : MonoBehaviour
 
         ApplyEngineForce();
 
-        float forwardSpeed = Vector2.Dot(rigidbody.linearVelocity, transform.up);
+        float forwardSpeed = ForwardSpeed;
         Vector2 forwardVelocity = transform.up * forwardSpeed;
         Vector2 lateralVelocity = transform.right * Vector2.Dot(rigidbody.linearVelocity, transform.right);
         Vector2 newLateralVelocity = lateralVelocity * (handbreak.Value ? breakDriftFactor : driftFactor);

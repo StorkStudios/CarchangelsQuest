@@ -27,4 +27,16 @@ public class PlayerInputAdapter : MonoBehaviour
             carEngine.handbreak.Value = false;
         }
     }
+
+    public void CarHornInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            carEngine.horn.Value = true;
+        }
+        else if (context.canceled)
+        {
+            carEngine.horn.Value = false;
+        }
+    }
 }
