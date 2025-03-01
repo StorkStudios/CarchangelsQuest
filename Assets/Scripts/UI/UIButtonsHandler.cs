@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class UIButtonsHandler : MonoBehaviour
 {
@@ -11,7 +10,6 @@ public class UIButtonsHandler : MonoBehaviour
     [SerializeField]
     private GameObject mainMenuPane;
 
-    public void OnStartGame() => SceneManager.LoadScene("City");
     public void OnCredits() {
         mainMenuPane.SetActive(false);
         creditsPane.SetActive(true);

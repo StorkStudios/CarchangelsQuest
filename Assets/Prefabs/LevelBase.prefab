@@ -80,6 +80,7 @@ MonoBehaviour:
   speedWindowSeconds: 5
   playerKillDetector: {fileID: 1188637834455445911}
   carBody: {fileID: 532414406865423246}
+  gameScore: {fileID: 11400000, guid: d604b224bd7de34c3a354a32cf3a02e1, type: 2}
 --- !u!114 &1032954801319593933
 MonoBehaviour:
   m_ObjectHideFlags: 0

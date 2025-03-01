@@ -23,15 +23,21 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
     
     [SerializeField]
     private PlayerKillDetector playerKillDetector;
+
     [SerializeField]
     private Rigidbody2D carBody;
 
+    [SerializeField]
+    private GameScore gameScore;
+
     void Start()
     {
+        gameScore.Score = 0;
         playerKillDetector.HumanKilled += () => {
             humansKilled.Value += 1;
             score.Value += scorePerHumanKilled;
         };
+        
     }
 
     void FixedUpdate()
@@ -53,6 +59,7 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
         averageSpeed.Value = speedHistorySum / speedHistory.Count;
 
         score.Value += averageSpeed.Value * scorePerAverageSpeed / Time.fixedDeltaTime;
+        gameScore.Score = score.Value;
     }
 
 
