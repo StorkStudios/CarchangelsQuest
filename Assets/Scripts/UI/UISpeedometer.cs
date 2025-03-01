@@ -14,25 +14,23 @@ public class UISpeedometer : MonoBehaviour
     [SerializeField]
     private string suffix;
     [SerializeField]
-    private float maxSpeed;
-    [SerializeField]
     private float maxScale;
     [SerializeField]
     private Image barFill;
 
-    private Rigidbody2D rigidbody;
+    private CarEngine engine;
 
     private void Start()
     {
-        rigidbody = FindObjectsByType<Rigidbody2D>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).First(e => e.CompareTag(Tags.Player));
+        engine = FindObjectsByType<CarEngine>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).First(e => e.CompareTag(Tags.Player));
     }
 
     private void LateUpdate()
     {
-        float speed = rigidbody.linearVelocity.magnitude;
+        float speed = engine.ForwardSpeed;
         int shownSpeed = (int)(speed * speedToKPHConvertValue);
         SetText($"{shownSpeed}{suffix}");
-        float t = speed / maxSpeed;
+        float t = speed / engine.MaxSpeed;
         transform.localScale = Vector3.one * Mathf.LerpUnclamped(1, maxScale, t);
         barFill.fillAmount = Mathf.Clamp01(t);
     }
