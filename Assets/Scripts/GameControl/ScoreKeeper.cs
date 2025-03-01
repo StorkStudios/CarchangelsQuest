@@ -71,7 +71,7 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
         remove => humansKilled.ValueChanged -= value;
     }
 
-    public float HumanKilled => humansKilled.Value;
+    public int HumanKilled => humansKilled.Value;
 
     public event ObservableVariable<float>.ValueChangedDelegate averageSpeedChanged
     {
