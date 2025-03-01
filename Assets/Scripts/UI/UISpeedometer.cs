@@ -1,6 +1,7 @@
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UISpeedometer : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class UISpeedometer : MonoBehaviour
     private float maxSpeed;
     [SerializeField]
     private float maxScale;
+    [SerializeField]
+    private Image barFill;
 
     private Rigidbody2D rigidbody;
 
@@ -29,7 +32,9 @@ public class UISpeedometer : MonoBehaviour
         float speed = rigidbody.linearVelocity.magnitude;
         int shownSpeed = (int)(speed * speedToKPHConvertValue);
         SetText($"{shownSpeed}{suffix}");
-        transform.localScale = Vector3.one * Mathf.LerpUnclamped(1, maxScale, speed / maxSpeed);
+        float t = speed / maxSpeed;
+        transform.localScale = Vector3.one * Mathf.LerpUnclamped(1, maxScale, t);
+        barFill.fillAmount = Mathf.Clamp01(t);
     }
 
     private void SetText(string text)
