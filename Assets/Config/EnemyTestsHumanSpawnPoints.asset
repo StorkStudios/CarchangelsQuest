@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b49d0441684c63f0ba5ffd10d55f863, type: 3}
   m_Name: EnemyTestsHumanSpawnPoints
   m_EditorClassIdentifier: 
-  SpawnPoints:
+  Points:
   - {x: -30, y: -20}
   - {x: -30, y: -13.260001}
   - {x: -30, y: -9.890001}

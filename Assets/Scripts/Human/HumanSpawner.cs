@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class HumanSpawner : MonoBehaviour
+public class HumanSpawner : SpawnerBase
 {
     [SerializeField]
     private GameObject humanPrefab;
@@ -18,36 +17,18 @@ public class HumanSpawner : MonoBehaviour
     [SerializeField]
     private Transform humansParent;
 
-    [Header("Points generation")]
-    [SerializeField]
-    [EditObjectInInspector]
-    private HumanSpawnPoints spawnPoints;
-
-    [SerializeField]
-    private RangeBoundaries<Vector2> gridBoundaries;
-
-    [SerializeField]
-    private float noiseThreshold;
-
-    [SerializeField]
-    private float noiseScale;
-
-    [SerializeField]
-    private float gridSize;
-
-    private Vector3[] gridCorners = new Vector3[4];
-
     private IEnumerable<Vector2> shuffledHumanPositions;
     private IEnumerator<Vector2> nextHumanPosition;
 
     private IEnumerator Start()
     {
-        if (spawnPoints == null || spawnPoints.SpawnPoints == null || spawnPoints.SpawnPoints.Count == 0)
+        if (spawnPoints == null || spawnPoints.Points == null || spawnPoints.Points.Count == 0)
         {
             Debug.LogError("Human spawn points not generated. Humans will not be spawned");
             yield break;
         }
-        shuffledHumanPositions = spawnPoints.SpawnPoints.Shuffled();
+        
+        shuffledHumanPositions = spawnPoints.Points.Shuffled();
         nextHumanPosition = shuffledHumanPositions.GetEnumerator();
         nextHumanPosition.MoveNext();
 
@@ -70,7 +51,6 @@ public class HumanSpawner : MonoBehaviour
         {
             if (!nextHumanPosition.MoveNext())
             {
-                Debug.Log("Human spawn points list wrapped");
                 nextHumanPosition = shuffledHumanPositions.GetEnumerator();
                 nextHumanPosition.MoveNext();
             }
@@ -78,65 +58,8 @@ public class HumanSpawner : MonoBehaviour
         Instantiate(humanPrefab, nextHumanPosition.Current, Quaternion.Euler(0, 0, Random.Range(0, 359)), humansParent);
         if (!nextHumanPosition.MoveNext())
         {
-            Debug.Log("Human spawn points list wrapped");
             nextHumanPosition = shuffledHumanPositions.GetEnumerator();
             nextHumanPosition.MoveNext();
         }
-    }
-
-    private void OnValidate()
-    {
-        gridCorners[0] = gridBoundaries.Min;
-        gridCorners[1] = new Vector3(gridBoundaries.Min.x, gridBoundaries.Max.y);
-        gridCorners[2] = gridBoundaries.Max;
-        gridCorners[3] = new Vector3(gridBoundaries.Max.x, gridBoundaries.Min.y);
-    }
-
-    public void GenerateSpawnPoints()
-    {
-        spawnPoints.SpawnPoints = new List<Vector2>();
-        for (float x = gridBoundaries.Min.x; x < gridBoundaries.Max.x; x += gridSize)
-        {
-            for (float y = gridBoundaries.Min.y; y < gridBoundaries.Max.y; y += gridSize)
-            {
-                float v = Mathf.PerlinNoise(x / noiseScale, y / noiseScale);
-                Vector2 position = new Vector2(x, y);
-                if (v > noiseThreshold && !Physics2D.OverlapCircle(position, 0.2f, LayerMask.GetMask("Wall")))
-                {
-                    spawnPoints.SpawnPoints.Add(position);
-                }
-            }
-        }
-        EditorUtility.SetDirty(spawnPoints);
-        AssetDatabase.SaveAssets();
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        if (spawnPoints == null)
-        {
-            return;
-        }
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawLineStrip(gridCorners, true);
-        for (float x = gridBoundaries.Min.x; x < gridBoundaries.Max.x; x += gridSize)
-        {
-            for (float y = gridBoundaries.Min.y; y < gridBoundaries.Max.y; y += gridSize)
-            {
-                Gizmos.DrawWireSphere(new Vector3(x, y, 0), 0.2f);
-            }
-        }
-        Gizmos.color = Color.green;
-        foreach (Vector2 point in spawnPoints.SpawnPoints)
-        {
-            Gizmos.DrawWireSphere(new Vector3(point.x, point.y, 0), 0.2f);
-        }
-    }
-
-    private bool IsPointVisible(Vector3 point)
-    {
-        Vector3 viewportPoint = Camera.main.WorldToViewportPoint(point);
-        return (new Rect(0, 0, 1, 1)).Contains(viewportPoint);
     }
 }

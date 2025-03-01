@@ -1,7 +1,7 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyController : MonoBehaviour
@@ -34,11 +34,16 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private float pathRecalculationDelay = 1;
 
+    [SerializeField]
+    private float maxDistanceFromPlayer;
+
     [Header("Debug")]
 
     [SerializeField]
     [ReadOnly]
     private State state = State.Chase;
+
+    public event Action<EnemyController> Despawned;
 
     private NavMeshAgent agent;
     private NavMeshPath path;
@@ -64,6 +69,12 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        if ((transform.position - player.transform.position).magnitude > maxDistanceFromPlayer)
+        {
+            Despawned?.Invoke(this);
+            Destroy(gameObject);
+        }
+
         switch (state)
         {
             case State.Chase:

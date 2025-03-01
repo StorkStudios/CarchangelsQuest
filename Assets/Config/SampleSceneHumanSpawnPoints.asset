@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b49d0441684c63f0ba5ffd10d55f863, type: 3}
   m_Name: SampleSceneHumanSpawnPoints
   m_EditorClassIdentifier: 
-  SpawnPoints:
+  Points:
   - {x: -81.87, y: -69.7}
   - {x: -81.87, y: 27.800003}
   - {x: -81.87, y: 50.300003}
