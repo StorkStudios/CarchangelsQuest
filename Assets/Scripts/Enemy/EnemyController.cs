@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,12 +14,14 @@ public class EnemyController : MonoBehaviour
         ReverseWaypoint
     }
 
+    [Header("References")]
     [SerializeField]
     private Transform player;
 
     [SerializeField]
     private CarEngine engine;
 
+    [Header("Config")]
     [SerializeField]
     private float steeringSensitivty;
 
@@ -28,13 +32,16 @@ public class EnemyController : MonoBehaviour
     private Transform frontReverseEndRange;
 
     [SerializeField]
+    private float pathRecalculationDelay = 1;
+
+    [Header("Debug")]
+
+    [SerializeField]
     [ReadOnly]
     private State state = State.Chase;
 
     private NavMeshAgent agent;
     private NavMeshPath path;
-    [SerializeField]
-    [ReadOnly]
     private Vector3 waypoint;
 
     private ContactFilter2D wallContactFilter = new ContactFilter2D();
@@ -65,18 +72,8 @@ public class EnemyController : MonoBehaviour
                     if (hits > 0)
                     {
                         //PrintRaycastResults(hits);
-                        agent.enabled = true;
-                        if (agent.CalculatePath(player.position, path))
-                        {
-                            waypoint = path.corners[1];
-                            state = State.GoingToWaypoint;
-                        }
-                        else
-                        {
-                            Debug.Log("No valid path");
-                        }
-                        agent.enabled = false;
-                        Debug.Log("Path recalculated");
+                        state = State.GoingToWaypoint;
+                        StartCoroutine(RecalculatePathCoroutine());
                     }
                     else
                     {
@@ -125,6 +122,24 @@ public class EnemyController : MonoBehaviour
         bool toPlayer = state == State.Chase || state == State.ReverseChase;
         float angleTowardsTarget = Vector2.SignedAngle(transform.up, (toPlayer ? player.position : waypoint) - transform.position);
         engine.steeringWheel.Value = Mathf.Clamp(angleTowardsTarget * steeringSensitivty, -1, 1) * ((state == State.ReverseChase || state == State.ReverseWaypoint) ? -1 : 1);
+    }
+
+    private IEnumerator RecalculatePathCoroutine()
+    {
+        while (state == State.GoingToWaypoint || state == State.ReverseWaypoint)
+        {
+            agent.enabled = true;
+            if (agent.CalculatePath(player.position, path))
+            {
+                waypoint = path.corners[1];
+            }
+            else
+            {
+                Debug.LogWarning($"No valid path for enemy {gameObject.name}");
+            }
+            agent.enabled = false;
+            yield return new WaitForSeconds(pathRecalculationDelay);
+        }
     }
 
     private int WallRaycast()
