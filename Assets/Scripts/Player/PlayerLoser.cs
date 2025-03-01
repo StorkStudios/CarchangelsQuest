@@ -26,7 +26,7 @@ public class PlayerLoser : MonoBehaviour
     void Update()
     {
         if (carBody.linearVelocity.magnitude < minVelocityThreshold && enemiesInRange.Count > 0) {
-            catchProgess.Value += Mathf.MoveTowards(catchProgess.Value, 1, catchProgessIncrementFactor * Time.deltaTime);
+            catchProgess.Value = Mathf.MoveTowards(catchProgess.Value, 1, catchProgessIncrementFactor * Time.deltaTime);
         } else {
             catchProgess.Value = Mathf.MoveTowards(catchProgess.Value, 0, catchProgessDecrementFactor * Time.deltaTime);
         }
