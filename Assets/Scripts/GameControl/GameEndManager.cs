@@ -1,35 +1,66 @@
+using DG.Tweening;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameEndManager : MonoBehaviour
+public class GameEndManager : Singleton<GameEndManager>
 {
     [SerializeField]
     private GameScore gameScore;
     [SerializeField]
-    private ScoreKeeper scoreKeeper;
+    private float timeScaleAnimationDuration;
     [SerializeField]
-    private PlayerLoser playerLoser;
+    private float timeToGameOverScene;
     [SerializeField]
-    private bool hasGameEnded = false;
+    private string gameOverSceneName;
 
-    void Start()
+    public bool HasGameEnded { get; private set; }
+
+    public event Action GameEnded;
+
+    private ScoreKeeper scoreKeeper;
+    private PlayerLoser playerLoser;
+
+    private void Start()
     {
         gameScore.Score = 0;
+
+        scoreKeeper = ScoreKeeper.Instance;
+        playerLoser = FindAnyObjectByType<PlayerLoser>();
+
         playerLoser.CatchProgessChanged += OnCatchProgressChanged;
     }
 
-    void OnCatchProgressChanged(float oldValue, float newValue) {
-        if (newValue >= 1) {
-            playerLoser.Lock();
-
-            gameScore.Score = scoreKeeper.Score;
-            hasGameEnded = true;
-            GameEnded?.Invoke(this, new EventArgs());
+    private void OnCatchProgressChanged(float oldValue, float newValue) 
+    {
+        if (newValue >= 1) 
+        {
+            EndGame();
         }
     }
 
-     public event EventHandler GameEnded;
+    private void EndGame()
+    {
+        HasGameEnded = true;
+        playerLoser.Lock();
+        gameScore.Score = scoreKeeper.Score;
+        DOTween.To(() => Time.timeScale, (x) => Time.timeScale = x, 0, timeScaleAnimationDuration);
+        GameEnded?.Invoke();
+        StartCoroutine(LoadGameEndScene());
+    }
 
-     public bool HasGameEnded => hasGameEnded;
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        Time.timeScale = 1;
+    }
+
+    private IEnumerator LoadGameEndScene()
+    {
+        yield return new WaitForSecondsRealtime(timeToGameOverScene);
+
+        SceneManager.LoadScene(gameOverSceneName);
+    }
 }

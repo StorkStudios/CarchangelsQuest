@@ -10,13 +10,7 @@ public class UIBustedAnimation : MonoBehaviour
 
     private void Start()
     {
-        FindAnyObjectByType<PlayerLoser>().CatchProgessChanged += (_, v) =>
-        {
-            if (v >= 1)
-            {
-                StartAnimation();
-            }
-        };
+        GameEndManager.Instance.GameEnded += StartAnimation;
     }
 
     private void StartAnimation()
@@ -37,6 +31,6 @@ public class UIBustedAnimation : MonoBehaviour
 
         mask.position = position;
 
-        mask.DOAnchorPosX(0, animationDuration).SetEase(Ease.Linear);
+        mask.DOAnchorPosX(0, animationDuration).SetEase(Ease.Linear).SetUpdate(true);
     }
 }
