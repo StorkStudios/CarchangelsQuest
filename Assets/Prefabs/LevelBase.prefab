@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1209819084086620706}
   - component: {fileID: 1032954801319593933}
   - component: {fileID: 3076149159046613126}
+  - component: {fileID: 1972140677373269548}
   m_Layer: 0
   m_Name: LevelBase
   m_TagString: Untagged
@@ -123,6 +124,22 @@ MonoBehaviour:
   timeScaleAnimationDuration: 1
   timeToGameOverScene: 5
   gameOverSceneName: GameEnd
+--- !u!114 &1972140677373269548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3182430132283023727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 261095ab60eda251b9baf7d173897fbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupPrefab: {fileID: 7325453762645095982, guid: 370d38699ae622730a99ff9c5c43b35a, type: 3}
+  groupsLocations: []
+  pointSize: 3
+  groupsParent: {fileID: 0}
 --- !u!1 &5055054189532815442
 GameObject:
   m_ObjectHideFlags: 0
