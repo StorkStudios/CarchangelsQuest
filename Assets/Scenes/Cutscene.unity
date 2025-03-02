@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenes:
-  - background: {fileID: 0}
+  - background: {fileID: -7551176101055524867, guid: fef57e35ca493e541b2b3a260e31aa94, type: 3}
     voiceover: {fileID: 8300000, guid: 1fd87ea7322b35e2cb1c5bd85cde661f, type: 3}
     text: "The AI takeover turned out to bring more advantages than disadvantages.
       Most people welcomed the new state of affairs with open arms, seeing the potential

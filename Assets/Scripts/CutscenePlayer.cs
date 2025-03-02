@@ -42,7 +42,7 @@ public class CutscenePlayer : MonoBehaviour
             background.sprite = scene.background;
             audioSource.clip = scene.voiceover;
 
-            courtain.DOFade(0, backgroundFadeDuration / 2);
+            yield return courtain.DOFade(0, backgroundFadeDuration / 2).WaitForCompletion();
 
             yield return new WaitForSeconds(scene.delays.x);
 
@@ -52,7 +52,7 @@ public class CutscenePlayer : MonoBehaviour
 
             yield return new WaitForSeconds(scene.delays.y);
 
-            courtain.DOFade(1, backgroundFadeDuration / 2);
+            yield return courtain.DOFade(1, backgroundFadeDuration / 2).WaitForCompletion();
         }
 
         SceneManager.LoadScene(sceneToLoad);
