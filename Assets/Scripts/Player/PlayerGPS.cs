@@ -44,7 +44,15 @@ public class PlayerGPS : MonoBehaviour
     private void Start()
     {
         markers = FindObjectsByType<GPSMarker>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).ToList();
-        SortMarkers();
+        foreach (GPSMarker marker in markers)
+        {
+            marker.Destroyed += OnMarkerDestroyed;
+        }
+    }
+
+    private void OnMarkerDestroyed(GPSMarker marker)
+    {
+        markers.Remove(marker);
     }
 
     private void LateUpdate()
@@ -53,6 +61,7 @@ public class PlayerGPS : MonoBehaviour
         {
             arrow.DOFade(0, fadeOutDuration);
             enabled = false;
+            return;
         }
 
         SortMarkers();
