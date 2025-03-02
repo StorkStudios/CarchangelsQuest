@@ -36,6 +36,7 @@ public class SpawnerBase : MonoBehaviour
         gridCorners[3] = new Vector3(gridBoundaries.Max.x, gridBoundaries.Min.y);
     }
 
+#if UNITY_EDITOR
     public void GenerateSpawnPoints()
     {
         spawnPoints.Points = new List<Vector2>();
@@ -54,6 +55,7 @@ public class SpawnerBase : MonoBehaviour
         EditorUtility.SetDirty(spawnPoints);
         AssetDatabase.SaveAssets();
     }
+#endif
 
     protected virtual void OnDrawGizmosSelected()
     {
