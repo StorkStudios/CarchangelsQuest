@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3172908516054560166}
   - component: {fileID: 5920579959843103377}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Light 2D (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5846657455689896367}
   - component: {fileID: 1594348568370933256}
   - component: {fileID: 3970762609436149445}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lamp1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

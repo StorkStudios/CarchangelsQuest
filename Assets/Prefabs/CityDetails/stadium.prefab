@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7060985321682542478}
   - component: {fileID: 5339715308091734060}
   - component: {fileID: 4334130221728010592}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bulech (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 5181081370035509624}
   - component: {fileID: 3413819553749860642}
   - component: {fileID: 4870986817054596949}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bulech (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 7877069910959636690}
   - component: {fileID: 494994931643633725}
   - component: {fileID: 6155811424626266525}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bulech (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 9209608066015824658}
   - component: {fileID: 8233712927357395275}
   - component: {fileID: 9059213234587885395}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bulech (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 2026799010590891147}
   - component: {fileID: 3193570054822419344}
   - component: {fileID: 7798601816487518172}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bulech (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -750,7 +750,7 @@ GameObject:
   - component: {fileID: 8251681084859301771}
   - component: {fileID: 8461397712997903474}
   - component: {fileID: 2958582934255621746}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bulech
   m_TagString: Untagged
   m_Icon: {fileID: 0}

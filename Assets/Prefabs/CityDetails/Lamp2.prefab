@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5999034572662042415}
   - component: {fileID: 8949508307112171475}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 5880493027300849078}
   - component: {fileID: 2135102147553509526}
   - component: {fileID: 4910134571221483607}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LampPole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1949579188168273356}
   - component: {fileID: 7954775360270401688}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7154831520185377735}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lamp2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
