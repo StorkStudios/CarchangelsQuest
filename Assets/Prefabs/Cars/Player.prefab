@@ -1228,4 +1228,9 @@ MonoBehaviour:
   collision: {fileID: 2917422574111236834}
   personDeath: {fileID: 2058593394694297399}
   deathSounds:
-  - {fileID: 8300000, guid: 1f7479f4c44c95241b311d870c5e69cd, type: 3}
+  - {fileID: 8300000, guid: 7626ee9a330c63da293a68e5cc02cf53, type: 3}
+  - {fileID: 8300000, guid: e418bdfeed3f7f4f1a2400f9d4bee2b4, type: 3}
+  - {fileID: 8300000, guid: 792ccc87357aee3358af26ea7481a229, type: 3}
+  - {fileID: 8300000, guid: 4595e5878e5763630a5178c83a81dbd7, type: 3}
+  - {fileID: 8300000, guid: 9ba73a7f098cfb272bdf526c59d98c35, type: 3}
+  - {fileID: 8300000, guid: 7e3525fb5d7f5233ea6560adecc553dc, type: 3}
