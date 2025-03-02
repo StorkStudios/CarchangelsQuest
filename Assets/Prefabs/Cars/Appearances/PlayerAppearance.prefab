@@ -1555,6 +1555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8905035580270253780}
   - component: {fileID: 7418763622139492165}
+  - component: {fileID: 3073821850658326201}
   m_Layer: 0
   m_Name: SoundModule
   m_TagString: Untagged
@@ -1624,6 +1625,27 @@ MonoBehaviour:
     m_RotationOrder: 4
   tireScreech: {fileID: 3063108883616712491}
   horn: {fileID: 4631178297343204427}
+--- !u!114 &3073821850658326201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5256344307426522410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece9c7efbbefd954bb7db947e25b1cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collision: {fileID: 0}
+  personDeath: {fileID: 0}
+  deathSounds:
+  - {fileID: 8300000, guid: 7626ee9a330c63da293a68e5cc02cf53, type: 3}
+  - {fileID: 8300000, guid: e418bdfeed3f7f4f1a2400f9d4bee2b4, type: 3}
+  - {fileID: 8300000, guid: 792ccc87357aee3358af26ea7481a229, type: 3}
+  - {fileID: 8300000, guid: 4595e5878e5763630a5178c83a81dbd7, type: 3}
+  - {fileID: 8300000, guid: 9ba73a7f098cfb272bdf526c59d98c35, type: 3}
+  - {fileID: 8300000, guid: 7e3525fb5d7f5233ea6560adecc553dc, type: 3}
 --- !u!1 &5511717058572667430
 GameObject:
   m_ObjectHideFlags: 0

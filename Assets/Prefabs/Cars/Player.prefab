@@ -1124,6 +1124,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3073821850658326201, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
+      propertyPath: collision
+      value: 
+      objectReference: {fileID: 2917422574111236834}
+    - target: {fileID: 3073821850658326201, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
+      propertyPath: personDeath
+      value: 
+      objectReference: {fileID: 2058593394694297399}
     - target: {fileID: 4583621162467532755, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -1193,10 +1201,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8905035580270253780, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6501988458591701804}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5256344307426522410, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4673331098952807291}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
 --- !u!4 &1289828147813278486 stripped
 Transform:
@@ -1208,29 +1213,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8139406173398090858, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
   m_PrefabInstance: {fileID: 7670590520930661826}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2486303913179939048 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5256344307426522410, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
-  m_PrefabInstance: {fileID: 7670590520930661826}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4673331098952807291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2486303913179939048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ece9c7efbbefd954bb7db947e25b1cb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collision: {fileID: 2917422574111236834}
-  personDeath: {fileID: 2058593394694297399}
-  deathSounds:
-  - {fileID: 8300000, guid: 7626ee9a330c63da293a68e5cc02cf53, type: 3}
-  - {fileID: 8300000, guid: e418bdfeed3f7f4f1a2400f9d4bee2b4, type: 3}
-  - {fileID: 8300000, guid: 792ccc87357aee3358af26ea7481a229, type: 3}
-  - {fileID: 8300000, guid: 4595e5878e5763630a5178c83a81dbd7, type: 3}
-  - {fileID: 8300000, guid: 9ba73a7f098cfb272bdf526c59d98c35, type: 3}
-  - {fileID: 8300000, guid: 7e3525fb5d7f5233ea6560adecc553dc, type: 3}
