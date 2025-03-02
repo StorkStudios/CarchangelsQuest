@@ -32,6 +32,8 @@ public class CutscenePlayer : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.SetInt("CutsceneWatched", 1);
+        PlayerPrefs.Save();
         StartCoroutine(CutsceneCoroutine());
     }
 
