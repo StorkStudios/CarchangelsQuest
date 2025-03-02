@@ -608,7 +608,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: RiverAngleCollider
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2540355806146253646, guid: ca19e80fbe63156a486027a5113a62b8, type: 3}
+    - {fileID: 234774824355859704, guid: ca19e80fbe63156a486027a5113a62b8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
