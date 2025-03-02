@@ -54,7 +54,7 @@ public class ScoreKeeper : Singleton<ScoreKeeper>
         
         averageSpeed.Value = speedHistorySum / speedHistory.Count;
 
-        score.Value += averageSpeed.Value * scorePerAverageSpeed / Time.fixedDeltaTime;
+        score.Value += averageSpeed.Value * scorePerAverageSpeed * Time.fixedDeltaTime;
     }
 
 

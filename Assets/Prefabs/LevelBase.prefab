@@ -76,9 +76,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e718118814b3b67c4976e050b6a76911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scorePerHumanKilled: 1
+  scorePerHumanKilled: 1000
   scorePerAverageSpeed: 1
   speedWindowSeconds: 5
+  speedPointGrantTime: 5
   playerKillDetector: {fileID: 1188637834455445911}
   carBody: {fileID: 532414406865423246}
 --- !u!114 &1032954801319593933
