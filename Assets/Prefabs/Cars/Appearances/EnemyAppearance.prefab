@@ -959,6 +959,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 7eb2fede4a654f24a94e08457ca749e7, type: 3}
+    - target: {fileID: 7418763622139492165, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
+      propertyPath: collision
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8139406173398090858, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1000,7 +1004,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 98267306271445529, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8139406173398090858, guid: f24f66a518b977c45943e0a3e6415660, type: 3}
       insertIndex: -1
