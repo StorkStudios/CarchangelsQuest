@@ -26,6 +26,13 @@ public class CarSoundModule : MonoBehaviour
     [SerializeField]
     private AudioSource horn;
 
+    [Header("Collision")]
+    [SerializeField]
+    private PlayerCollisionsDetector collisionsDetector;
+
+    [SerializeField]
+    private AudioSource collision;
+
     private EngineState engineState = EngineState.Off;
 
     private CarEngine engine;
@@ -38,6 +45,10 @@ public class CarSoundModule : MonoBehaviour
         engineRunning.pitch = enginePitchBySpeed.Evaluate(0);
         engine.IsDriftingChanged += OnIsDriftingChanged;
         engine.horn.ValueChanged += OnHornChanged;
+        if (collisionsDetector != null)
+        {
+            collisionsDetector.CollisionEvent += () => collision.Play();
+        }
     }
 
     private void OnHornChanged(bool oldValue, bool newValue)
