@@ -484,9 +484,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe74bf8cd9074d909e1067f2d74e603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCameraSize: 8
-  maxCameraSize: 20
-  speedForMaxSize: 25
+  cameraSize:
+    Min: 10
+    Max: 18
+  speedRange:
+    Min: 8
+    Max: 25
   playerRigidbody: {fileID: 532414406865423246}
 --- !u!1 &8371270637399661689
 GameObject:

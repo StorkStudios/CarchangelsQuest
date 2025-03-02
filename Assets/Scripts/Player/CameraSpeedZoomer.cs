@@ -4,13 +4,10 @@ using UnityEngine;
 public class CameraSpeedZoomer : MonoBehaviour
 {
     [SerializeField]
-    private float minCameraSize;
+    private RangeBoundariesFloat cameraSize;
 
     [SerializeField]
-    private float maxCameraSize;
-
-    [SerializeField]
-    private float speedForMaxSize;
+    private RangeBoundariesFloat speedRange;
 
     [SerializeField]
     private Rigidbody2D playerRigidbody;
@@ -24,6 +21,8 @@ public class CameraSpeedZoomer : MonoBehaviour
 
     private void Update()
     {
-        camera.orthographicSize = Mathf.Lerp(minCameraSize, maxCameraSize, playerRigidbody.linearVelocity.magnitude / speedForMaxSize);
+        float t = Mathf.Clamp01(speedRange.NormalizeValue(playerRigidbody.linearVelocity.magnitude));
+
+        camera.orthographicSize = Mathf.Lerp(cameraSize.Min, cameraSize.Max, t);
     }
 }
