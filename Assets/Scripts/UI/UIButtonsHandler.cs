@@ -11,6 +11,13 @@ public class UIButtonsHandler : MonoBehaviour
     [SerializeField]
     private GameObject mainMenuPane;
 
+    private void Start()
+    {
+        UIAudioSettings audioSettings = settingsPane.GetComponentInChildren<UIAudioSettings>(true);
+        audioSettings.OnEnable();
+        audioSettings.OnDisable();
+    }
+
     public void OnCredits() {
         creditsPane.SetActive(true);
         animation.currentTarget = UIMainMenuShineAnimation.Target.Left;
