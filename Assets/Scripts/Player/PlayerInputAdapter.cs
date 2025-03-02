@@ -7,6 +7,7 @@ public class PlayerInputAdapter : MonoBehaviour
     private CarEngine carEngine;
 
     private GameEndManager gameEndManager;
+    private PauseHandler pauseHandler;
 
     private void Start()
     {
@@ -15,6 +16,11 @@ public class PlayerInputAdapter : MonoBehaviour
 
     public void AccelerationInput(InputAction.CallbackContext context)
     {
+        if (pauseHandler.IsPaused)
+        {
+            return;
+        }
+
         if (gameEndManager.HasGameEnded)
         {
             carEngine.gasPedal.Value = 0;
@@ -26,7 +32,7 @@ public class PlayerInputAdapter : MonoBehaviour
 
     public void SteeringInput(InputAction.CallbackContext context)
     {
-        if (gameEndManager.HasGameEnded)
+        if (pauseHandler.IsPaused || gameEndManager.HasGameEnded)
         {
             return;
         }
@@ -36,6 +42,11 @@ public class PlayerInputAdapter : MonoBehaviour
 
     public void HandbreakInput(InputAction.CallbackContext context)
     {
+        if (pauseHandler.IsPaused)
+        {
+            return;
+        }
+
         if (gameEndManager.HasGameEnded)
         {
             carEngine.handbreak.Value = false;
@@ -54,6 +65,11 @@ public class PlayerInputAdapter : MonoBehaviour
 
     public void CarHornInput(InputAction.CallbackContext context)
     {
+        if (pauseHandler.IsPaused)
+        {
+            return;
+        }
+
         if (gameEndManager.HasGameEnded)
         {
             carEngine.horn.Value = false;
@@ -67,6 +83,19 @@ public class PlayerInputAdapter : MonoBehaviour
         else if (context.canceled)
         {
             carEngine.horn.Value = false;
+        }
+    }
+
+    public void PauseInput(InputAction.CallbackContext context)
+    {
+        if (gameEndManager.HasGameEnded)
+        {
+            return;
+        }
+
+        if (context.started)
+        {
+            pauseHandler.TogglePause();
         }
     }
 }
