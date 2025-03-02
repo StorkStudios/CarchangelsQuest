@@ -270,6 +270,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 89c5281d9903369a198241d62a3168d4, type: 3}
   - {fileID: 8300000, guid: 610e32e83bee47e3c8918e2f0bf1e8f8, type: 3}
   - {fileID: 8300000, guid: 70d7c3e150904a7848244353d48a8bac, type: 3}
+  - {fileID: 8300000, guid: 71ab92cfcdcedea45ab154a7e2a9c7d5, type: 3}
   loreClips:
   - {fileID: 8300000, guid: f01544a2f8f7e2973afc71ea368aaa58, type: 3}
   - {fileID: 8300000, guid: 0fd5e6d85d996b787943cc79d7f75f74, type: 3}
