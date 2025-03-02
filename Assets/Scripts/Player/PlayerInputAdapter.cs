@@ -12,6 +12,7 @@ public class PlayerInputAdapter : MonoBehaviour
     private void Start()
     {
         gameEndManager = GameEndManager.Instance;
+        pauseHandler = PauseHandler.Instance;
     }
 
     public void AccelerationInput(InputAction.CallbackContext context)
