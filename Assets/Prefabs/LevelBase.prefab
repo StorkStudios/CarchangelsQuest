@@ -79,7 +79,6 @@ MonoBehaviour:
   scorePerHumanKilled: 1000
   scorePerAverageSpeed: 1
   speedWindowSeconds: 5
-  speedPointGrantTime: 5
   playerKillDetector: {fileID: 1188637834455445911}
   carBody: {fileID: 532414406865423246}
 --- !u!114 &1032954801319593933
@@ -186,6 +185,7 @@ GameObject:
   - component: {fileID: 8555504962062501791}
   - component: {fileID: 6206781947395394538}
   - component: {fileID: 8668236477913828495}
+  - component: {fileID: 6741661571322185287}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -325,6 +325,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transformToFollow: {fileID: 5523539566993133568}
   offset: {x: 0, y: 0, z: -5}
+--- !u!114 &6741661571322185287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5227052476472936374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe74bf8cd9074d909e1067f2d74e603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minCameraSize: 8
+  maxCameraSize: 20
+  speedForMaxSize: 25
+  playerRigidbody: {fileID: 532414406865423246}
 --- !u!1 &8371270637399661689
 GameObject:
   m_ObjectHideFlags: 0
