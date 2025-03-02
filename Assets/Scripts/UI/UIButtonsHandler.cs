@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class UIButtonsHandler : MonoBehaviour
 {
-
+    [SerializeField]
+    private UIMainMenuShineAnimation animation;
     [SerializeField]
     private GameObject creditsPane;
     [SerializeField]
@@ -11,18 +12,26 @@ public class UIButtonsHandler : MonoBehaviour
     private GameObject mainMenuPane;
 
     public void OnCredits() {
-        mainMenuPane.SetActive(false);
         creditsPane.SetActive(true);
+        animation.currentTarget = UIMainMenuShineAnimation.Target.Left;
+        this.CallDelayed(animation.AnimationDuration, () => mainMenuPane.SetActive(false));
     }
+
     public void OnSettings() {
-        mainMenuPane.SetActive(false);
         settingsPane.SetActive(true);
+        animation.currentTarget = UIMainMenuShineAnimation.Target.Left;
+        this.CallDelayed(animation.AnimationDuration, () => mainMenuPane.SetActive(false));
     }
 
     public void OnBack() {
         mainMenuPane.SetActive(true);
-        settingsPane.SetActive(false);
-        creditsPane.SetActive(false);
+        animation.currentTarget = UIMainMenuShineAnimation.Target.Right;
+        this.CallDelayed(animation.AnimationDuration, () =>
+        {
+            settingsPane.SetActive(false);
+            creditsPane.SetActive(false);
+        });
     }
+
     public void OnExit() => Application.Quit();
 }
