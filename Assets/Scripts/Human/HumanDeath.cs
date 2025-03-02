@@ -38,7 +38,9 @@ public class HumanDeath : MonoBehaviour
         if (collision.collider.CompareTag(Tags.Player))
         {
             rigidbody.AddForce(collision.relativeVelocity.normalized * hitForce);
-            Rigidbody2D signRigidbody = Instantiate(aiSignPrefab, transform.position, transform.rotation).GetComponent<Rigidbody2D>();
+            Rigidbody2D signRigidbody = Instantiate(aiSignPrefab).GetComponent<Rigidbody2D>();
+            signRigidbody.transform.position = new Vector3(transform.position.x, transform.position.y, signRigidbody.transform.position.z);
+            signRigidbody.transform.rotation = transform.rotation;
             signRigidbody.AddForce(collision.relativeVelocity.normalized * hitForce * 1.5f);
             Died?.Invoke();
             StartCoroutine(DeathCoroutine());
