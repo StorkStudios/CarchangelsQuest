@@ -21,6 +21,8 @@ public class HumanDeath : MonoBehaviour
     private float bloodShowDuration;
     [SerializeField]
     private TrailRenderer trailRenderer;
+    [SerializeField]
+    private GameObject aiSignPrefab;
 
     public event System.Action Died;
 
@@ -36,6 +38,8 @@ public class HumanDeath : MonoBehaviour
         if (collision.collider.CompareTag(Tags.Player))
         {
             rigidbody.AddForce(collision.relativeVelocity.normalized * hitForce);
+            Rigidbody2D signRigidbody = Instantiate(aiSignPrefab, transform.position, transform.rotation).GetComponent<Rigidbody2D>();
+            signRigidbody.AddForce(collision.relativeVelocity.normalized * hitForce * 1.5f);
             Died?.Invoke();
             StartCoroutine(DeathCoroutine());
         }
