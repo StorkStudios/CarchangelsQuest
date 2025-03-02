@@ -12,7 +12,6 @@ public class PlayerLoser : MonoBehaviour
     [SerializeField]
     private float catchProgessDecrementFactor = 1;
     
-    [SerializeField]
     private bool locked = false;
 
     private readonly HashSet<Collider2D> enemiesInRange = new();
