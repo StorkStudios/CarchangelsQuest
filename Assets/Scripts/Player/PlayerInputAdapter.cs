@@ -17,12 +17,7 @@ public class PlayerInputAdapter : MonoBehaviour
 
     public void AccelerationInput(InputAction.CallbackContext context)
     {
-        if (pauseHandler.IsPaused)
-        {
-            return;
-        }
-
-        if (gameEndManager.HasGameEnded)
+        if (pauseHandler.IsPaused || gameEndManager.HasGameEnded)
         {
             carEngine.gasPedal.Value = 0;
             return;
@@ -43,12 +38,7 @@ public class PlayerInputAdapter : MonoBehaviour
 
     public void HandbreakInput(InputAction.CallbackContext context)
     {
-        if (pauseHandler.IsPaused)
-        {
-            return;
-        }
-
-        if (gameEndManager.HasGameEnded)
+        if (pauseHandler.IsPaused || gameEndManager.HasGameEnded)
         {
             carEngine.handbreak.Value = false;
             return;
@@ -66,12 +56,7 @@ public class PlayerInputAdapter : MonoBehaviour
 
     public void CarHornInput(InputAction.CallbackContext context)
     {
-        if (pauseHandler.IsPaused)
-        {
-            return;
-        }
-
-        if (gameEndManager.HasGameEnded)
+        if (pauseHandler.IsPaused || gameEndManager.HasGameEnded)
         {
             carEngine.horn.Value = false;
             return;
