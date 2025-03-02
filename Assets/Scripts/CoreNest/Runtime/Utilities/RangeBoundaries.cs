@@ -36,4 +36,9 @@ public class RangeBoundariesFloat : RangeBoundaries<float>
     {
         return (Min + Max) / 2;
     }
+
+    public float NormalizeValue(float value)
+    {
+        return (value - Min) / (Max - Min);
+    }
 }
