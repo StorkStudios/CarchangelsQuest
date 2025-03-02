@@ -247,7 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   engine: {fileID: 209644613917457740}
-  steeringSensitivty: 1
+  steeringSensitivty: 0.05
   frontReverseStartRange: {fileID: 1881266156557329062}
   frontReverseEndRange: {fileID: 7853720525886665683}
   pathRecalculationDelay: 1
