@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -1046793572532438291}
   - component: {fileID: 1209819084086620706}
   - component: {fileID: 1032954801319593933}
+  - component: {fileID: 3076149159046613126}
   m_Layer: 0
   m_Name: LevelBase
   m_TagString: Untagged
@@ -80,7 +81,6 @@ MonoBehaviour:
   speedWindowSeconds: 5
   playerKillDetector: {fileID: 1188637834455445911}
   carBody: {fileID: 532414406865423246}
-  gameScore: {fileID: 11400000, guid: d604b224bd7de34c3a354a32cf3a02e1, type: 2}
 --- !u!114 &1032954801319593933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +107,21 @@ MonoBehaviour:
   enemySpawnRange: 80
   player: {fileID: 5476989717517060498}
   optimalEnemySpawnAngle: 30
+--- !u!114 &3076149159046613126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3182430132283023727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765a1546af3ff7e1980905cf72c7fbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameScore: {fileID: 11400000, guid: d604b224bd7de34c3a354a32cf3a02e1, type: 2}
+  scoreKeeper: {fileID: 1209819084086620706}
+  playerLoser: {fileID: 1885136128834660068}
 --- !u!1 &5055054189532815442
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,6 +616,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57424adc4a7aa6341b45039534e8ae8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1885136128834660068 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7551339403457241704, guid: 688e4764ee768fb46bdf7a524e3d28c0, type: 3}
+  m_PrefabInstance: {fileID: 8278432500360627340}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d666de503281eff18969141fef9c4ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5476989717517060498 stripped

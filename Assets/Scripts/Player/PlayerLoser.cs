@@ -12,6 +12,9 @@ public class PlayerLoser : MonoBehaviour
     [SerializeField]
     private float catchProgessDecrementFactor = 1;
     
+    [SerializeField]
+    private bool locked = false;
+
     private readonly HashSet<Collider2D> enemiesInRange = new();
 
     private ObservableVariable<float> catchProgess = new(0);
@@ -25,6 +28,8 @@ public class PlayerLoser : MonoBehaviour
 
     void Update()
     {
+        if (locked) return;
+
         if (carBody.linearVelocity.magnitude < minVelocityThreshold && enemiesInRange.Count > 0) {
             catchProgess.Value = Mathf.MoveTowards(catchProgess.Value, 1, catchProgessIncrementFactor * Time.deltaTime);
         } else {
@@ -41,6 +46,11 @@ public class PlayerLoser : MonoBehaviour
     void OnTriggerExit2D(Collider2D collision)
     {
         enemiesInRange.Remove(collision);
+    }
+
+    public void Lock() {
+        locked = true;
+        catchProgess.Value = 1;
     }
 
     public float CatchProgess => catchProgess.Value;
