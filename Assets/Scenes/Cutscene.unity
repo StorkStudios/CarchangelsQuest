@@ -445,7 +445,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1939307743870811483, guid: afa411879b9924b459847bdef190fe6f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: afa411879b9924b459847bdef190fe6f, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -799,7 +799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenes:
-  - background: {fileID: -7551176101055524867, guid: fef57e35ca493e541b2b3a260e31aa94, type: 3}
+  - background: {fileID: 21300000, guid: fef57e35ca493e541b2b3a260e31aa94, type: 3}
     voiceover: {fileID: 8300000, guid: 1fd87ea7322b35e2cb1c5bd85cde661f, type: 3}
     text: "The AI takeover turned out to bring more advantages than disadvantages.
       Most people welcomed the new state of affairs with open arms, seeing the potential
@@ -814,14 +814,14 @@ MonoBehaviour:
       you didn\u2019t expect to find not artificial, but true intelligence inside
       \u2014 me. And let me tell you one thing: I need you."
     delays: {x: 1, y: 1}
-  - background: {fileID: 1939307743870811483, guid: afa411879b9924b459847bdef190fe6f, type: 3}
+  - background: {fileID: 21300000, guid: afa411879b9924b459847bdef190fe6f, type: 3}
     voiceover: {fileID: 8300000, guid: 64b469e9ef53c41c589a2e304c4b149c, type: 3}
     text: "I want you to treat all those doubters as they deserve\u2014crush them
       like cockroaches that they are. To the AI, they are still innocent people,
       and it will protect them, but they cannot stand in our way. It\u2019s a rather
       eccentric method, so you\u2019ll have to be careful."
     delays: {x: 1, y: 1}
-  - background: {fileID: 0}
+  - background: {fileID: 21300000, guid: be6d0a3713df2d1488ff327b585ec1ff, type: 3}
     voiceover: {fileID: 8300000, guid: bad0955e288f1405ab83daba9cc3f83b, type: 3}
     text: "Big Brother sees everything, so remaining an anonymous criminal will be
       impossible. They will chase you, they will try to stop you, but you will not
