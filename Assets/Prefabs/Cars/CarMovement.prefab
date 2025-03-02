@@ -160,5 +160,5 @@ MonoBehaviour:
   handbreakGasMultiplier: 0.5
   maxForwardSpeed: 35
   maxReverseSpeed: 13.5
-  minLatheralDriftDetectionSpeed: 4
+  minLatheralDriftDetectionSpeed: 6
   breakingSpeedThreshold: 2
