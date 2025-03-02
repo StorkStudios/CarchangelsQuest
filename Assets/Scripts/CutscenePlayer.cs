@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -28,6 +29,12 @@ public class CutscenePlayer : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
     [SerializeField]
+    private TextMeshProUGUI text;
+    [SerializeField]
+    private CanvasGroup canvasGroup;
+    [SerializeField]
+    private float textFadeDuration;
+    [SerializeField]
     private float backgroundFadeDuration;
 
     private void Start()
@@ -43,14 +50,18 @@ public class CutscenePlayer : MonoBehaviour
         {
             background.sprite = scene.background;
             audioSource.clip = scene.voiceover;
+            text.text = scene.text;
 
             yield return courtain.DOFade(0, backgroundFadeDuration / 2).WaitForCompletion();
 
             yield return new WaitForSeconds(scene.delays.x);
 
+            canvasGroup.DOFade(1, textFadeDuration);
             audioSource.Play();
 
             yield return new WaitWhile(() => audioSource.isPlaying);
+
+            canvasGroup.DOFade(0, textFadeDuration);
 
             yield return new WaitForSeconds(scene.delays.y);
 
