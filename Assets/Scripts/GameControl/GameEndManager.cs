@@ -41,12 +41,19 @@ public class GameEndManager : Singleton<GameEndManager>
         }
     }
 
+    private void Update()
+    {
+        if (HasGameEnded)
+        {
+            Time.timeScale = Mathf.MoveTowards(Time.timeScale, 0, Time.unscaledDeltaTime / timeScaleAnimationDuration);
+        }
+    }
+
     private void EndGame()
     {
         HasGameEnded = true;
         playerLoser.Lock();
         gameScore.Score = scoreKeeper.Score;
-        DOTween.To(() => Time.timeScale, (x) => Time.timeScale = x, 0, timeScaleAnimationDuration);
         GameEnded?.Invoke();
         StartCoroutine(LoadGameEndScene());
     }
@@ -54,6 +61,7 @@ public class GameEndManager : Singleton<GameEndManager>
     protected override void OnDestroy()
     {
         base.OnDestroy();
+        HasGameEnded = false;
         Time.timeScale = 1;
     }
 
