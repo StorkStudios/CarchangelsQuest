@@ -97,6 +97,8 @@ GameObject:
   - component: {fileID: 5846657455689896367}
   - component: {fileID: 1594348568370933256}
   - component: {fileID: 3970762609436149445}
+  - component: {fileID: 7406676829982257838}
+  - component: {fileID: 4175165583511354360}
   m_Layer: 6
   m_Name: Lamp1
   m_TagString: Untagged
@@ -205,12 +207,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.2
+  m_Radius: 0.25
 --- !u!50 &1594348568370933256
 Rigidbody2D:
   serializedVersion: 5
@@ -274,7 +276,7 @@ MonoBehaviour:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.19999695, y: 0.19999695, z: 0}
+      m_Extent: {x: 0.25, y: 0.25, z: 0}
     m_EdgeProcessing: 1
     m_TrimEdge: 0
     m_FlipX: 0
@@ -291,3 +293,32 @@ MonoBehaviour:
     - rid: 4090904090687307944
       type: {class: ShadowShape2DProvider_Collider2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
+--- !u!208 &7406676829982257838
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251663418673120475}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.205, y: 0.205, z: 50000}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!114 &4175165583511354360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251663418673120475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa8c504b12db744ab1f841c4006ec06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSpeedToBreak: 10
